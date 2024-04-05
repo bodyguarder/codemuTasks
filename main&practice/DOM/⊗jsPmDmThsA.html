@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <p class="text1">Lorem, ipsum dolor.</p>
+  <p class="text2">Lorem, ipsum dolor.</p>
+  <p class="text3">Lorem, ipsum dolor.</p>
+  <p class="text4">Lorem, ipsum dolor.</p>
+  <p class="text5">Lorem, ipsum dolor.</p>
+
+  <!-- #2 -->
+  <input class="input1" type="text" value="2">
+  <input class="input2" type="text" value="4">
+  <input class="input3" type="text" value="6">
+
+  <script>
+    //#1
+    let text1 = document.querySelector('.text1');
+    let text2 = document.querySelector('.text2');
+    let text3 = document.querySelector('.text3');
+    let text4 = document.querySelector('.text4');
+    let text5 = document.querySelector('.text5');
+
+    function func1() {
+      this.innerHTML = this.innerHTML + '!';
+    }
+
+    text1.addEventListener('click', func1)
+    text2.addEventListener('click', func1)
+    text3.addEventListener('click', func1)
+    text4.addEventListener('click', func1)
+    text5.addEventListener('click', func1)
+
+    //#2
+    let input1 = document.querySelector('.input1');
+    let input2 = document.querySelector('.input2');
+    let input3 = document.querySelector('.input3');
+
+    function func2() {
+      this.value = Math.pow(Number(this.value), 2);
+    }
+
+    input1.addEventListener('blur', func2);
+    input2.addEventListener('blur', func2);
+    input3.addEventListener('blur', func2);
+  </script>
+</body>
+</html>

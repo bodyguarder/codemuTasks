@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <table class="table">
+  </table>
+
+  <style>
+    td {
+      width: 50px;
+      height: 50px;
+      border: 2px solid black;
+    }
+  </style>
+
+  <script>
+    let table = document.querySelector('.table');
+    createTable();
+    let tds = table.querySelectorAll('td');
+    let randArr = [];
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function pushArr(arr) {
+      while (arr.length < 10) {
+        let randNum = getRandomInt(1, 100);
+        if (arr.includes(randNum)) {
+          continue;
+        } else {
+          arr.push(randNum);
+        }
+      }
+      console.log(arr);
+    }
+
+    function createTable() {
+      let count = 1;
+      for (let i = 0; i <= 9; i++) {
+        let tr = document.createElement('tr');
+        table.appendChild(tr);
+
+        for (let j = 0; j <= 9; j++) {
+          let td = document.createElement('td');
+          td.textContent = count;
+          count++;
+          tr.appendChild(td);
+        }
+      }
+    }
+
+    for (let td of tds) {
+      td.addEventListener('click', function pushCell() {
+        let num = +td.textContent;
+        if (randArr.includes(num)) {
+          td.style.backgroundColor = 'green';
+          let index = randArr.findIndex(function (elem) {
+            return elem == num;
+          });
+          randArr.splice(index, 1);
+          console.log(randArr);
+        }
+        if (randArr.length == 0) {
+          alert('Поздравляем, вы угадали все ячейки!');
+        }
+      });
+    }
+
+    let timerId = setTimeout(function func() {
+      alert('Время вышло, вы проиграли!');
+    }, 60000);
+    pushArr(randArr);
+  </script>
+</body>
+
+</html>

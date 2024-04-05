@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="btn">view localStorage</button>
+
+  <!-- ⊗jsSpSgKVA -->
+  <button class="btn1">view keys and values</button>
+
+  <script>
+    localStorage.setItem('key', 10); // здесь у меня вопрос, почему-то в строке 49 значение по ключу'key' выводится как undefined, если ключ поменять на другое слово то работает? почему так?
+    localStorage.setItem('value', 2);
+    localStorage.setItem('car', 'toyota');
+
+    let key1 = localStorage.key(0);
+    let key2 = localStorage.key(1);
+    let key3 = localStorage.key(2);
+
+    let value1 = localStorage.getItem(key1);
+    let value2 = localStorage.getItem(key2);
+    let value3 = localStorage.getItem(key3);
+
+    console.log(value1, value2, value3);
+    console.log(key1, key2, key3);
+
+    //⊗jsSpSgIL
+    let btn = document.querySelector('.btn');
+    btn.addEventListener('click', function func() {
+      for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let value = localStorage.getItem(key);
+        console.log(value);
+      }
+    });
+
+    //⊗jsSpSgKVA
+    let btn1 = document.querySelector('.btn1');
+    let keys = Object.keys(localStorage);
+    let values = Object.values(localStorage);
+    btn1.addEventListener('click', function func() {
+      for (let i = 0; i < keys.length; i++) {
+        console.log(keys[i]);
+        console.log(values[i]);
+      }
+    });
+  </script>
+</body>
+
+</html>

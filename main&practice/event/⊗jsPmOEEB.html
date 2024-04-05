@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div tabindex="2">
+    <ul tabindex="2">
+      <li tabindex="3">1</li>
+    </ul>
+  </div>
+
+  <script>
+    let div = document.querySelector('div');
+    let ul = document.querySelector('ul');
+    let li = document.querySelector('li');
+
+    function func() {
+      console.log(this.tagName);
+    }
+
+    div.addEventListener('dblclick', func);
+    ul.addEventListener('dblclick', func);
+    li.addEventListener('dblclick', func);
+
+    div.addEventListener('blur', func);
+    ul.addEventListener('blur', func);
+    li.addEventListener('blur', func);
+  </script>
+
+  <style>
+    div,
+    ul,
+    li {
+      padding: 20px;
+    }
+
+    div {
+      border: 1px solid red;
+    }
+
+    ul {
+      border: 1px solid orange;
+    }
+
+    li {
+      border: 1px solid green;
+    }
+  </style>
+</body>
+
+</html>

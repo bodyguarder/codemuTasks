@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="parent">
+    <button>click me</button>
+    <div id="block">
+      text
+    </div>
+  </div>
+
+  <script>
+    let parent = document.querySelector('#parent');
+    let button = document.querySelector('button');
+    let block = document.querySelector('#block');
+
+    button.addEventListener('click', function func(event) {
+      block.classList.add('active');
+      event.stopPropagation();
+    });
+
+    parent.addEventListener('click', function () {
+      block.classList.remove('active');
+    });
+  </script>
+
+  <style>
+    #block:not(.active) {
+      display: none;
+    }
+
+    #parent {
+      padding: 50px;
+      border: 2px solid red;
+    }
+  </style>
+</body>
+
+</html>

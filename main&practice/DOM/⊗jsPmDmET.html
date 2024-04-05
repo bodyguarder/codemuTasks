@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p class="text1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quae accusantium tenetur iste, quas soluta incidunt voluptatum explicabo repellat quisquam molestias esse voluptate itaque perspiciatis architecto ab omnis minus aspernatur?</p>
+  
+  <button class="button1" type="button">Button1</button>
+
+  <p class="text2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quae accusantium tenetur iste, quas
+    soluta incidunt voluptatum explicabo repellat quisquam molestias esse voluptate itaque perspiciatis architecto ab
+    omnis minus aspernatur?</p>
+
+  <button class="button2" type="button">Button2</button>
+
+  <script>
+    //#1
+    let button1 = document.querySelector('.button1');
+    button1.addEventListener('click', function func() {
+      let text1 = document.querySelector('.text1');
+      alert(text1.textContent);
+    });
+
+    //#2
+    let button2 = document.querySelector('.button2');
+    button2.addEventListener('click', function func() {
+    let text2 = document.querySelector('.text2');
+    text2.textContent = 'Lorem, ipsum.'
+    });
+  </script>
+
+  <!-- #3 -->
+
+  <p class="num1">1</p>
+  <p class="num2">2</p>
+
+  <button class="btn3">btn3</button>
+
+  <script>
+    let num1 = document.querySelector('.num1');
+    let num2 = document.querySelector('.num2');
+    let btn3 = document.querySelector('.btn3');
+
+    btn3.addEventListener('click', function func() {
+      let sum = Number(num1.textContent) + Number(num2.textContent);
+      alert(sum);
+    });
+  </script>
+
+  <!-- #4 -->
+
+  <p class="number1">1</p>
+  <p class="number2">2</p>
+  <p class="number3">3</p>
+  <div class="div">Some DIV</div>
+
+  <button class="btn4">btn4</button>
+
+  <script>
+    let number1 = document.querySelector('.number1');
+    let number2 = document.querySelector('.number2');
+    let number3 = document.querySelector('.number3');
+    let btn4 = document.querySelector('.btn4');
+    let div = document.querySelector('.div');
+
+    btn4.addEventListener('click', function func() {
+      div.textContent = Number(number1.textContent) + Number(number2.textContent) + Number(number3.textContent);
+    });
+  </script>
+
+  <!-- #5 -->
+  <p class="number">0</p>
+  <button class="count-btn">plus one</button>
+
+  <script>
+    let number = document.querySelector('.number');
+    let countBtn = document.querySelector('.count-btn');
+    countBtn.addEventListener('click', function func() {
+      number.textContent = Number(number.textContent) + 1;
+    });
+  </script>
+
+  <!-- #6 -->
+  <p class="text6">Lorem ipsum dolor sit amet.</p>
+  <button class="addMark">Button</button>
+
+  <script>
+    let text = document.querySelector('.text6');
+    let addMark = document.querySelector('.addMark');
+    addMark.addEventListener('click', function func() {
+      text.textContent = text.textContent + '!';
+    });
+  </script>
+</body>
+
+</html>

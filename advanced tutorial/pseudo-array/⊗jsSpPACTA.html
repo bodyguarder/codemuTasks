@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p class="text">1</p>
+  <p class="text">2</p>
+  <p class="text">3</p>
+  <p class="text">4</p>
+  <p class="text">5</p>
+
+  <script>
+    let ps = document.querySelectorAll('p');
+
+    let arr1 = [];
+    for (let p of ps) {
+      arr1.push(p);
+    }
+
+    let arr2 = [...ps];
+    let arr3 = Array.from(ps);
+    console.log(arr1, arr2, arr3);
+
+    let res = arr1.slice(1, -1);
+    console.log(res);
+
+    //⊗jsSpPATp
+    let parent = document.querySelector('body');
+    let nodes = parent.childNodes;
+    console.log(nodes);
+    let children = parent.children;
+    console.log(children);
+    let elems = document.getElementsByClassName('text');
+    console.log(elems);
+  </script>
+</body>
+</html>

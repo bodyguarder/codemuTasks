@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 #2 #3 -->
+  <table id="table1"></table>
+
+  <!-- #4 -->
+  <input id="table__row" class="table__row" type="text" value="10">
+  <input id="table__col" class="table__col" type="text" value="10">
+  <button class="btn4">generate</button>
+
+  <script>
+    //#1 #2 #3
+    let table1 = document.querySelector('#table1');
+    let row = document.querySelector('.table__row');
+    let col = document.querySelector('.table__col');
+    let btn4 = document.querySelector('.btn4');
+    
+    btn4.addEventListener('click', func);
+
+    function delElems() {
+      let elems = document.querySelectorAll('tr');
+      for (let elem of elems) {
+        table1.removeChild(elem);
+      }
+    }
+
+    function func() {
+      delElems();
+      let rowValue = Number(row.value);
+      let colValue = Number(col.value);
+      for (let i = 0; i < rowValue; i++) {
+        let tr = document.createElement('tr');
+        for (let j = 0; j < colValue; j++) {
+          let
+            td = document.createElement('td');
+          td.textContent = 'x'
+          tr.appendChild(td);
+          td.style.backgroundColor = 'blue';
+          td.style.padding = '5px';
+        }
+        table1.appendChild(tr);
+        table1.style.border = '1px solid red';
+        table1.style.padding = '20px';
+      }
+    }
+  </script>
+</body>
+
+</html>

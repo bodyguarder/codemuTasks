@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <button id="button">проверить ответы</button>
+
+  <style>
+    .right {
+      border: 2px solid green;
+    }
+
+    .wrong {
+      border: 2px solid red;
+    }
+  </style>
+
+  <script>
+    let answers = [
+      'ответ 1',
+      'ответ 2',
+      'ответ 3',
+    ];
+    let questions = [
+      'вопрос 1?',
+      'вопрос 2?',
+      'вопрос 3?'
+    ];
+    let test = document.querySelector('#test');
+    let btn = document.querySelector('#button');
+
+    function createQuest(parent, questArr, index) {
+      let box = document.createElement('div');
+      let text = document.createElement('span');
+      let input = document.createElement('input');
+      text.textContent = questArr[index];
+      box.appendChild(text);
+      box.appendChild(input);
+      parent.appendChild(box);
+    }
+
+    for (let i = 0; i < questions.length; i++) {
+      createQuest(test, questions, i);
+    }
+
+    let inputs = document.querySelectorAll('input');
+
+    btn.addEventListener('click', function func() {
+      for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == answers[i]) {
+          inputs[i].classList.add('right');
+        } else {
+          inputs[i].classList.add('wrong');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

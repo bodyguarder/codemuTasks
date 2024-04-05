@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <a class="link1" href="https://code.mu/ru">link1</a>
+
+  <!-- #2 -->
+  <input class="input1" type="number" value="2">
+  <input class="input2" type="number" value="2">
+  <p class="text2">text2</p>
+  <a class="link2" href="https://code.mu/ru">link2</a>
+
+  <script>
+    //#1
+    let link1 = document.querySelector('.link1');
+    link1.addEventListener('click', function func(event) {
+      link1.innerHTML += link1.href;
+      event.preventDefault();
+    });
+
+    //#2
+    let input1 = document.querySelector('.input1');
+    let input2 = document.querySelector('.input2');
+    let text2 = document.querySelector('.text2');
+    let link2 = document.querySelector('.link2');
+
+    link2.addEventListener('click', function func(event) {
+      event.preventDefault();
+      text2.innerHTML = Number(input1.value) + Number(input2.value);
+    });
+  </script>
+</body>
+</html>

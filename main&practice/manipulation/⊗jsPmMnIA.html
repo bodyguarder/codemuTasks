@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <div id="elem1" style="border: 1px solid 
+	red;">
+    <p>text</p>
+    <p>text</p>
+    <p>text</p>
+  </div>
+
+  <script>
+    //#1
+    let elem1 = document.querySelector('#elem1');
+    let insElem1 = document.createElement('p');
+    insElem1.textContent = '111';
+    elem1.insertAdjacentElement('beforeBegin', insElem1);
+
+    //#2
+    let insElem2 = document.createElement('p');
+    insElem2.textContent = '222';
+    elem1.insertAdjacentElement('afterEnd', insElem2);
+
+    //#3
+    let insElem3 = document.createElement('p');
+    insElem3.textContent = '333';
+    elem1.insertAdjacentElement('afterBegin', insElem3);
+
+    //#4
+    let insElem4 = document.createElement('p');
+    insElem4.textContent = '444';
+    elem1.insertAdjacentElement('beforeEnd', insElem4);
+  </script>
+</body>
+</html>

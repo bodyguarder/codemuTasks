@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>aaa</p>
+  <p>bbb</p>
+  <p>ccc</p>
+  <p>ddd</p>
+  <p>eee</p>
+
+  <button>click me</button>
+
+  <script>
+    let button = document.querySelector('button');
+    let elems = document.querySelectorAll('p');
+    let set = new Set;
+    for (let elem of elems) {
+      elem.addEventListener('click', function func() {
+        set.add(this);
+      });
+    }
+
+    button.addEventListener('click', function func() {
+      for (let elem of set) {
+        elem.textContent += '!';
+      }
+    });
+  </script>
+</body>
+</html>

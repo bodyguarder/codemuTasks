@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="⊗jsPmStCl.css">
+</head>
+<body>
+  <p class="text">Lorem ipsum dolor sit amet.</p>
+  <button class="btn1">Перечеркнуть</button>
+  <button class="btn2">Сделать жирным</button>
+  <button class="btn3">Сделать красным</button>
+
+  <script>
+    let text = document.querySelector('.text');
+    let btn1 = document.querySelector('.btn1');
+    let btn2 = document.querySelector('.btn2');
+    let btn3 = document.querySelector('.btn3');
+
+    btn1.addEventListener('click', function func() {
+      text.classList.toggle('text--decoration');
+    });
+    btn2.addEventListener('click', function func() {
+      text.classList.toggle('text--weight');
+    });
+    btn3.addEventListener('click', function func() {
+      text.classList.toggle('text--color');
+    });
+  </script>
+</body>
+</html>

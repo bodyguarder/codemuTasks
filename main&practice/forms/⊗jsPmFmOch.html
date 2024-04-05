@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <input class="input1" type="text" value="input1">
+  <p class="text1">Lorem, ipsum dolor.</p>
+
+  <!-- #2 -->
+  <input class="input2" type="checkbox">
+
+  <!-- #4 -->
+  <input class="input4" type="text" value="Lorem1">
+
+  <script>
+    //#1
+    let input1 = document.querySelector('.input1');
+    let text1 = document.querySelector('.text1');
+    input1.addEventListener('change', function func() {
+      text1.innerHTML += this.value;
+    });
+
+    //#2
+    let input2 = document.querySelector('.input2');
+    input2.addEventListener('change', function func() {
+      alert(this.checked);
+    });
+
+    //#4
+    let input4 = document.querySelector('.input4');
+    input4.addEventListener('change', function func() {
+      let arr = input4.value.split('');
+      if (arr.length < 5) {
+        input4.style.border = '5px solid green';
+      } else {
+        input4.style.border = '5px solid red';
+      }
+    });
+  </script>
+</body>
+
+</html>

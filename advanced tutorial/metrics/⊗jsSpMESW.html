@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="elem">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, repellendus nisi temporibus necessitatibus quas
+    explicabo culpa autem fugiat? Atque laborum dolorem eius sit explicabo iusto unde molestiae mollitia ratione
+    repellendus.
+    Mollitia doloribus architecto numquam, saepe omnis incidunt necessitatibus, corporis facilis maxime, possimus
+    maiores ad sint blanditiis vel vero debitis hic quis minima temporibus nam itaque quibusdam? Nemo voluptatem illo
+    quod? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, optio voluptatem exercitationem magni labore
+    dolorum similique explicabo doloribus assumenda
+    auctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoaucto.
+  </div>
+
+  <style>
+    #elem {
+      width: 300px;
+      height: 150px;
+      margin: 50px auto;
+      background: #CFF5BF;
+      overflow: auto;
+      text-align: justify;
+    }
+  </style>
+
+  <script>
+    let elem = document.querySelector('#elem');
+    let scrollWidth = elem.offsetWidth - elem.clientWidth;
+    console.log(scrollWidth);
+  </script>
+</body>
+
+</html>

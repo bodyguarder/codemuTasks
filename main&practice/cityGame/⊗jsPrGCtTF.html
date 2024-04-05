@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="field">
+  <div id="message">город</div>
+
+  <script>
+    /*
+     Игрок 1 вводит город, после нажатия слово добавляется в массив и удаляется из инпута. При каждом вводе слово будет
+     сравниваться с массивом названных городов. Также необходимо реализовать проверку правильности подбора городов
+     игроками. Последний символ предыдущего слова должен совпадать с первым символом следующего. 
+     В message будем выводить название введенного города либо сообщение о не соответствии города правилам.
+     */
+    let field = document.querySelector('#field');
+    let message = document.querySelector('#message');
+    let cities = [];
+
+    field.addEventListener('keypress', function func(event) {
+      if (event.key == 'Enter') {
+        if (cities.length == 0) {
+          cities.push(this.value);
+          message.textContent = this.value;
+        } else {
+          if (!cities.includes(this.value)) {
+            let prevCity = cities[cities.length - 1].split('');
+            let lastSym = prevCity[prevCity.length - 1];
+            let nextCity = this.value.split('');
+            let firstSym = nextCity[0].toLowerCase();
+            if (lastSym == firstSym) {
+              cities.push(this.value);
+              message.textContent = this.value;
+            } else {
+              message.textContent = 'город начинается не с буквы ' + lastSym;
+            }
+          } else {
+            message.textContent = 'этот город уже был, введите другой!'
+          }
+        }
+        this.value = '';
+      }
+    });
+  </script>
+</body>
+
+</html>

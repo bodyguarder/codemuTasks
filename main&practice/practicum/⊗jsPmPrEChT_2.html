@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <input class="input-data" type="text">
+  <input class="input-data" type="text">
+  <input class="input-data" type="text">
+  <button class="button-add" type="button">add</button>
+
+  <style>
+    td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+    }
+  </style>
+
+  <script>
+    //#1
+    let employees = [{
+        name: 'employee1',
+        age: 30,
+        salary: 400
+      },
+      {
+        name: 'employee2',
+        age: 31,
+        salary: 500
+      },
+      {
+        name: 'employee3',
+        age: 32,
+        salary: 600
+      },
+    ];
+
+    let table;
+
+    function createTable(employees) {
+      table = document.createElement('table');
+      let body = document.querySelector('body');
+      table.classList.add('table');
+      body.insertAdjacentElement('afterBegin', table);
+      for (let employe of employees) {
+        let tr = document.createElement('tr');
+        table.appendChild(tr);
+
+        for (let key in employe) {
+          let td = document.createElement('td');
+          let span = document.createElement('span');
+          span.textContent = employe[key];
+          td.appendChild(span);
+          tr.appendChild(td);
+        }
+
+        let td = document.createElement('td');
+        let link = document.createElement('a');
+        link.href = '';
+        link.textContent = 'delete';
+        td.appendChild(link);
+        tr.appendChild(td);
+        link.addEventListener('click', function (event) {
+          tr.remove();
+          let elemIndex = employees.findIndex(function func(elem) {
+            return elem == employe;
+          });
+          employees.splice(elemIndex, 1);
+          event.preventDefault();
+        });
+      }
+
+      let spans = table.querySelectorAll('span');
+      for (let span of spans) {
+        span.addEventListener('click', function addEdit() {
+          let input = document.createElement('input');
+          input.value = this.textContent;
+          this.textContent = '';
+          this.appendChild(input);
+          input.focus();
+          let self = this;
+          input.addEventListener('blur', function finishEdit() {
+            self.textContent = this.value;
+            self.addEventListener('click', addEdit);
+          });
+          this.removeEventListener('click', addEdit);
+        });
+      }
+    }
+
+    createTable(employees);
+
+    let inputs = document.querySelectorAll('.input-data');
+    let button = document.querySelector('.button-add');
+
+    button.addEventListener('click', function addWorker() {
+      let obj = {
+        name: inputs[0].value,
+        age: inputs[1].value,
+        salary: inputs[2].value
+      }
+
+      employees.push(obj);
+      table.remove();
+      createTable(employees);
+    })
+  </script>
+</body>
+
+</html>

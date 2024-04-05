@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <input id="elem" value="text">
+
+  <!-- #2 -->
+  <input id="elem2" class="www zzz">
+
+  <script>
+    //#1
+    let elem = document.querySelector('#elem');
+    let value = elem.getAttribute('value');
+    console.log(value);
+
+    //#2
+    let elem2 = document.querySelector('#elem2');
+    let class2 = elem2.getAttribute('class');
+    console.log(class2);
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="parent">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <input type="submit" id="button">
+
+  <script>
+    let parent = document.querySelector('#parent');
+    let button = document.querySelector('#button');
+
+    button.addEventListener('click', func);
+
+    let lis = parent.querySelectorAll('li');
+    for (let li of lis) {
+      li.addEventListener('click', function delElem() {
+        this.remove();
+      });
+    }
+
+    function func() {
+      let li = document.createElement('li');
+      li.textContent = +parent.lastElementChild.textContent + 1;
+      parent.appendChild(li);
+    }
+  </script>
+</body>
+
+</html>

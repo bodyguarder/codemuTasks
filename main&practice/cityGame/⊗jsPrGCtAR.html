@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="field">
+  <div id="message">Введите город</div>
+
+  <script>
+    let field = document.querySelector('#field');
+    let message = document.querySelector('#message');
+    let cities = [];
+    let allCities = ['Актау', 'Актобе', 'Атырау', 'Караганда', 'Кокшетау', 'Костанай', 'Кызылорда', 'Павлодар',
+      'Петропавловск', 'Семей', 'Талдыкорган', 'Тараз', 'Туркестан', 'Уральск', 'Усть - Каменогорск', 'Алматы',
+      'Ынтымак', 'Астана', 'Екатеринбург', 'Гагарино'
+    ];
+
+    function robot(self) {
+      let check = allCities.includes(self.value);
+      if (check) {
+        cities.push(self.value);
+        let lastCity = cities[cities.length - 1];
+        let lastSym = lastCity[lastCity.length - 1].toUpperCase();
+        for (let elem of allCities) {
+          if (elem.startsWith(lastSym) && !cities.includes(elem)) {
+            cities.push(elem);
+            message.textContent = elem;
+            break;
+          } else {
+            message.textContent = 'я проиграл!'
+          }
+        }
+      } else {
+        message.textContent = 'я не знаю такой город, введите другой!';
+      }
+    }
+
+    field.addEventListener('keypress', function func(event) {
+      if (event.key == 'Enter') {
+        let self = this;
+        if (cities.length == 0) {
+          robot(self);
+        } else {
+          if (!cities.includes(this.value)) {
+            let prevCity = cities[cities.length - 1].split('');
+            let lastSym = prevCity[prevCity.length - 1];
+            let nextCity = this.value.split('');
+            let firstSym = nextCity[0].toLowerCase();
+            if (lastSym == firstSym) {
+              robot(self);
+            } else {
+              message.textContent = 'город начинается не с буквы ' + lastSym;
+            }
+          } else {
+            message.textContent = 'этот город уже был, введите другой!'
+          }
+        }
+        console.log(cities);
+        this.value = '';
+      }
+    });
+  </script>
+</body>
+
+</html>

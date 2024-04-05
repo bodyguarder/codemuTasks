@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="parent">
+    <input id="input" placeholder="введите год и нажмите Enter">
+    <table id="table"></table>
+  </div>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #parent {
+      margin: 0 auto;
+      width: 600px;
+    }
+
+    #input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    #table {
+      width: 100%;
+    }
+
+    #table td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid black;
+    }
+  </style>
+
+  <script>
+    let table = document.querySelector('#table');
+    let input = document.querySelector('#input');
+    let obj = {
+      2018: {
+        '01.03.2018': ['событие 1', 'описание события 1'],
+        '25.03.2018': ['событие 2', 'описание события 2'],
+        '28.09.2018': ['событие 3', 'описание события 3'],
+      },
+      2019: {
+        '01.03.2019': ['событие 4', 'описание события 4'],
+        '25.03.2019': ['событие 5', 'описание события 5'],
+        '28.09.2019': ['событие 6', 'описание события 6'],
+      },
+      2022: {
+        '01.03.2022': ['событие 7', 'описание события 7'],
+        '25.03.2022': ['событие 8', 'описание события 8'],
+        '28.09.2022': ['событие 9', 'описание события 9'],
+        '15.11.2022': ['событие 9', 'описание события 9'],
+        '16.12.2022': ['событие 9', 'описание события 9'],
+      },
+    };
+
+    function createTable(subObj) {
+      for (let key in subObj) {
+        let tr = document.createElement('tr');
+        let date = document.createElement('td');
+        date.textContent = key;
+        tr.appendChild(date);
+        let event = document.createElement('td');
+        event.textContent = subObj[key][0];
+        tr.appendChild(event);
+        let descr = document.createElement('td');
+        descr.textContent = subObj[key][1];
+        tr.appendChild(descr);
+        table.appendChild(tr);
+      }
+    }
+
+    input.addEventListener('keypress', function func(event) {
+      if (event.key == 'Enter') {
+        let rows = table.querySelectorAll('tr');
+        for (let row of rows) {
+          row.remove();
+        }
+        createTable(obj[this.value]);
+      }
+    });
+  </script>
+</body>
+
+</html>

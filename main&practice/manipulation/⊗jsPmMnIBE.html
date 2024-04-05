@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ol class="list"></ol>
+  <button class="btn">button</button>
+
+  <script>
+    let list = document.querySelector('.list');
+    let btn = document.querySelector('.btn');
+
+    btn.addEventListener('click', func);
+
+    function func() {
+      let elem = document.createElement('li');
+      elem.textContent = 'item';
+      list.appendChild(elem);
+
+      elem.addEventListener('click', function func() {
+        this.textContent += '!';
+      });
+    }
+  </script>
+</body>
+</html>

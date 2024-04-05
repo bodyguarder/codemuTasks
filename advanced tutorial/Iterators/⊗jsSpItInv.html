@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+
+  <script>
+    //#1
+    let map = new Map();
+    map.set([1, 2], 'data1');
+    map.set([3, 4], 'data2');
+    let iter = map[Symbol.iterator]();
+
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+
+    //#2
+    let elems = document.querySelectorAll('p');
+    console.log(elems);
+    let iter2 = elems[Symbol.iterator]();
+    console.log(iter2.next());
+    console.log(iter2.next());
+    console.log(iter2.next());
+    console.log(iter2.next());
+    console.log(iter2.next());
+    console.log(iter2.next());
+
+    //#3
+    let elems2 = document.getElementsByTagName('p');
+    let iter3 = elems2[Symbol.iterator]();
+    console.log(iter3.next());
+    console.log(iter3.next());
+    console.log(iter3.next());
+    console.log(iter3.next());
+    console.log(iter3.next());
+    console.log(iter3.next());
+
+    //⊗jsSpItGn
+    function *func() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+    }
+
+    let iter4 = func();
+    console.log(iter4.next());
+    console.log(iter4.next());
+    console.log(iter4.next());
+    console.log(iter4.next());
+    console.log(iter4.next());
+    console.log(iter4.next());
+  </script>
+</body>
+</html>

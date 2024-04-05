@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>city1</li>
+    <li>city2</li>
+    <li>city3</li>
+    <li>city4</li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>Фамилия</th>
+      <th>Имя</th>
+      <th>Отчество</th>
+    </tr>
+    <tr>
+      <td>Иванов</td>
+      <td>Иван</td>
+      <td>Иванович</td>
+    </tr>
+    <tr>
+      <td>Петров</td>
+      <td>Петр</td>
+      <td>Петрович</td>
+    </tr>
+    <tr>
+      <td>Сидоров</td>
+      <td>Сидор</td>
+      <td>Сидорович</td>
+    </tr>
+  </table>
+
+  <script>
+    let arr = ['user1', 'user2', 'user3',
+      'user4', 'user5'
+    ];
+    let json = JSON.stringify(arr);
+    console.log(json);
+
+    let ul = document.querySelector('ul');
+    let lis = ul.querySelectorAll('li');
+    let arr1 = [];
+    for (let li of lis) {
+      arr1.push(li.textContent);
+    }
+    let json1 = JSON.stringify(arr1);
+    console.log(json1);
+
+    let table = document.querySelector('table');
+    let trs = table.querySelectorAll('tr');
+    let arr2 = [];
+    for (let i = 1; i < trs.length; i++) {
+      let tds = trs[i].querySelectorAll('td');
+      let obj = {
+        'surname': tds[0].textContent,
+        'name': tds[1].textContent,
+        'patronymic': tds[2].textContent,
+      }
+      arr2.push(obj);
+    }
+
+    let json2 = JSON.stringify(arr2);
+    console.log(json2);
+    
+  </script>
+</body>
+
+</html>

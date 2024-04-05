@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input class="input" type="text" placeholder="DD-MM-YYYY" value="06-08-1991">
+  <span>
+    <input class="radio" type="radio" name="radio" checked>
+    сегодня
+  </span>
+  <span>
+    <input class="radio" type="radio" name="radio">
+    завтра
+  </span>
+  <span>
+    <input class="radio" type="radio" name="radio">
+    послезавтра
+  </span>
+  <p></p>
+
+  <script>
+    let input = document.querySelector('.input');
+    let inputs = document.querySelectorAll('input[name="radio"]');
+    let p = document.querySelector('p');
+    let obj = {
+      0: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      1: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      2: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      3: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      4: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      5: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      6: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      7: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      8: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      9: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      10: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+      11: ['ты на верном пути', 'еще чуть-чуть', 'не сворачивай'],
+    };
+
+    function createHoroscope(obj, date, index) {
+      let month = +date.split('-')[1];
+      p.textContent = obj[month][index];
+    }
+
+    input.addEventListener('keypress', function func(event) {
+      if (event.key == 'Enter') {
+        let index = 0;
+        for (let i = 0; i < inputs.length; i++) {
+          if (inputs[i].checked) {
+            index = i;
+          }
+        }
+        createHoroscope(obj, input.value, index);
+      }
+    });
+
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('click', function func() {
+        if (Boolean(p.textContent) == true) {
+          index = i;
+          createHoroscope(obj, input.value, index);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

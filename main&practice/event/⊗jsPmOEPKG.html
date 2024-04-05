@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <input class="input1" type="text">
+
+  <!-- #5 -->
+  <input class="input5" type="text">
+  <p class="text5">text5</p>
+
+  <script>
+    //#1
+    let input1 = document.querySelector('.input1');
+    input1.addEventListener('keypress', func);
+
+    function func(event) {
+      console.log(event.key);
+      console.log(event.code);
+    }
+
+    //#5
+    let input5 = document.querySelector('.input5');
+    let text5 = document.querySelector('.text5');
+    input5.addEventListener('keypress', func);
+
+    function func(event) {
+      if (event.key == 'Enter') {
+        text5.innerHTML = input5.value;
+        input5.value = '';
+      }
+    }
+  </script>
+</body>
+</html>

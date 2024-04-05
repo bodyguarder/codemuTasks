@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input class="input" type="text">
+
+  <script>
+    //#1
+    let date = Date.now();
+    let time = localStorage.getItem('time');
+    if (time === null) {
+      localStorage.setItem('time', date);
+    } else {
+      let date2 = localStorage.getItem('time');
+      console.log(date2, date);
+      localStorage.setItem('time', date - date2);
+    }
+
+    //#2
+    if (localStorage.getItem('birthday') == null) {
+      let birthday = localStorage.setItem('birthday', prompt('Когда у вас ДР? (ДД.ММ.ГГГГ)', ''));
+    } else {
+      let arr = localStorage.getItem('birthday').split('.');
+      let dateToday = new Date();
+      let day = dateToday.getDate();
+      let month = dateToday.getMonth();
+
+      if (+arr[0] == +day || +arr[1] == +month) {
+        alert('С днем рождения!');
+      }
+    }
+
+    //#3
+    let input = document.querySelector('.input');
+    if (localStorage.getItem('value') == null) {
+      input.addEventListener('blur', function () {
+        localStorage.setItem('value', input.value);
+      });
+    } else {
+      input.value = localStorage.getItem('value');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .elem--colored {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- #1 -->
+  <ul id="elem1">
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+  </ul>
+
+  <!-- #2 -->
+  <ul id="elem2">
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+    <li>text</li>
+  </ul>
+
+  <script>
+    //#1
+    let elem1 = document.querySelector('#elem1');
+    elem1.firstElementChild.classList.add('elem--colored');
+
+    //#2
+    let elem2 = document.querySelector('#elem2');
+    elem2.lastElementChild.classList.add('elem--colored');
+
+    //#3
+    let elems = elem2.children;
+    for (let elem of elems) {
+      elem.innerHTML += '!';
+    }
+  </script>
+</body>
+</html>

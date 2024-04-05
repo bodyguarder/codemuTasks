@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="timer">?</div>
+    <div id="text"></div>
+    <button id="start" class="active">узнать свою судьбу</button>
+    <button id="stop">получить предсказание</button>
+  </div>
+
+  <style>
+    #parent {
+      text-align: center;
+    }
+
+    #parent>* {
+      margin-bottom: 10px;
+    }
+
+    #timer {
+      font-size: 18px;
+    }
+
+    #text {
+      font-size: 17px;
+      font-style: italic;
+    }
+
+    button {
+      padding: 5px 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:not(.active) {
+      display: none;
+    }
+  </style>
+
+  <script>
+    let parent = document.querySelector('#parent');
+    let timer = document.querySelector('#timer');
+    let text = document.querySelector('#text');
+    let btnStart = document.querySelector('#start');
+    let btnStop = document.querySelector('#stop');
+    let timerId;
+    let objPredic = {
+      1: 'сегодня вас ждет успех при изучении JavaScript',
+      2: 'сегодня лучше полежите весь день на диване',
+      3: 'у вас сегодня будет замечательный день',
+      4: 'сегодня вы рискуете что-нибудь забыть при выходе из дома',
+      5: 'сегодня вас ждет удача и успех во всех начинаниях',
+      6: 'устройте сегодня себе выходной - пусть весь мир подождет',
+    };
+
+    btnStart.addEventListener('click', runPredic);
+    btnStop.addEventListener('click', getPredic);
+
+    function runPredic() {
+      timerId = setInterval(function func() {
+        timer.textContent = getRand(1, 6);
+      }, 100);
+
+      this.classList.remove('active');
+      btnStop.classList.add('active');
+    }
+
+    function getRand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getPredic() {
+      clearInterval(timerId);
+      this.classList.remove('active');
+      let key = timer.textContent;
+      text.textContent = objPredic[key];
+      if (key % 2 == 0) {
+        text.style.color = 'red';
+      } else {
+        text.style.color = 'green';
+      }
+    }
+  </script>
+</body>
+
+</html>

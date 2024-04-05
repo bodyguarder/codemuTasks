@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- ⊗jsSpSgNA -->
+  <button class="btn">see storage</button>
+
+  <script>
+    if (localStorage.getItem('count') == null) {
+      let count = 1;
+      localStorage.setItem('count', count);
+      alert(localStorage.getItem('count'));
+    } else {
+      let count = localStorage.getItem('count');
+      count++;
+      //⊗jsSpSgDRm
+      if (count == 10) {
+        count = 0;
+      }
+      localStorage.setItem('count', count);
+      alert(localStorage.getItem('count'));
+    }
+
+    let index = 0;
+
+    let btn = document.querySelector('.btn');
+    btn.addEventListener('click', function func() {
+      alert(localStorage.length);
+      localStorage.setItem(index, index);
+      index++;
+      
+      if (localStorage.length > 10) {
+        localStorage.clear();
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="slider"></div>
+
+  <script>
+    let texts = ['text1', 'text2', 'text3'];
+    let slider = document.querySelector('#slider');
+    let i = 0;
+    let timerId = setInterval(function func() {
+      slider.textContent = texts[i];
+      if (i > texts.length - 1) {
+        i = 0;
+      }
+      i++;
+    }, 1000);
+  </script>
+</body>
+
+</html>

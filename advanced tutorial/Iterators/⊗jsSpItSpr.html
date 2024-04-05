@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      a: 1,
+      b: 2,
+      c: 3,
+      [Symbol.iterator]: function* () {
+        for (let key in this) {
+          yield this[key];
+        }
+      }
+    };
+
+    let arr = [...obj[Symbol.iterator]()];
+    console.log(arr);
+
+    //⊗jsSpItDA
+    let num = 209734980;
+    let arr1 = [...String(num)].map(Number);
+    let sum = arr1.reduce(function (res, elem) {
+      return res + elem;
+    })
+    console.log(sum);
+  </script>
+</body>
+
+</html>

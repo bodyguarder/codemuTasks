@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <ol id="elem1"></ol>
+
+  <!-- #2 -->
+  <ol id="elem2"></ol>
+  <button id="button2">click me</button>
+
+  <script>
+    //#1
+    let elem1 = document.querySelector('#elem1');
+    let child1 = document.createElement('li');
+    child1.textContent = 'item';
+    elem1.appendChild(child1);
+
+    //#2
+    let elem2 = document.querySelector('#elem2');
+    let button2 = document.querySelector('#button2');
+    button2.addEventListener('click', func);
+    
+    function func() {
+      let child2 = document.createElement('li');
+      child2.textContent = 'item';
+      elem2.appendChild(child2);
+    }
+  </script>
+</body>
+</html>

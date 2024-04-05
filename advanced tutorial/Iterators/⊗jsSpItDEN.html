@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table class="table">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <!-- ⊗jsSpItDED -->
+  <input id="id1" value="111">
+  <input id="id2" value="222">
+  <input id="id3" value="333">
+
+  <script>
+    let tds = document.querySelectorAll('td');
+    for (let [num, elem] of tds.entries()) {
+      elem.textContent = num;
+    }
+
+    //⊗jsSpItDED
+    let inputs = document.querySelectorAll('input');
+    for (let [key, {id, value}] of inputs.entries()) {
+      console.log(key);
+      console.log(id);
+      console.log(value);
+    }
+  </script>
+</body>
+</html>

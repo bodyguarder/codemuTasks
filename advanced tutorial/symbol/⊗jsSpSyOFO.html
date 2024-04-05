@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //#1
+    let arr = [1, 2, 3];
+    let sym1 = Symbol();
+    arr[sym1] = function () {
+      let sum = 0;
+      for (let elem of arr) {
+        sum += elem;
+      }
+      return sum;
+    };
+    arr.push(1, 2, 3);
+    let sum = arr[sym1]();
+    console.log(arr);
+    console.log(sum);
+
+    //⊗jsSpSyGb
+    let obj1 = {
+      a: 1,
+      b: 2,
+      c: 3
+    };
+    let obj2 = {
+      d: 3,
+      e: 4,
+      f: 5
+    };
+
+    let sym2 = Symbol.for('sum');
+
+    function func() {
+      let sum = 0;
+      for (let key in this) {
+        sum += this[key];
+      }
+      return sum;
+    };
+
+    obj1[sym2] = func;
+    obj2[sym2] = func;
+    console.log(obj1[sym2](), obj2[sym2]());
+
+    //⊗jsSpSyGN
+    let sym3 = Symbol.for('test1');
+    let sym4 = Symbol.for('test2');
+    let key3 = Symbol.keyFor(sym3);
+    let key4 = Symbol.keyFor(sym4);
+    console.log(key3, key4);
+
+    //⊗jsSpSyWK
+    let map = new Map();
+    let set = new Set();
+    console.log(map[Symbol.iterator]);
+    console.log(set[Symbol.iterator]);
+  </script>
+</body>
+
+</html>

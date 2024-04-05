@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <button id="button">проверить ответы</button>
+
+  <style>
+    .right {
+      border: 2px solid green;
+    }
+
+    .wrong {
+      border: 2px solid red;
+    }
+  </style>
+
+  <script>
+    let questions = [{
+        text: 'вопрос 1?',
+        right: 'ответ 1',
+      },
+      {
+        text: 'вопрос 2?',
+        right: 'ответ 2',
+      },
+      {
+        text: 'вопрос 3?',
+        right: 'ответ 3',
+      },
+    ];
+
+    let test = document.querySelector('#test');
+    let btn = document.querySelector('#button');
+
+    function createTest(arr) {
+      for (let obj of arr) {
+        let question = document.createElement('p');
+        question.textContent = obj['text'];
+        let input = document.createElement('input');
+        test.appendChild(question);
+        test.appendChild(input);
+      }
+    }
+
+    createTest(questions);
+
+    btn.addEventListener('click', function func() {
+      let inputs = document.querySelectorAll('input');
+      for (let i = 0; i < questions.length; i++) {
+        if (inputs[i].value == questions[i]['right']) {
+          inputs[i].classList.add('right');
+        } else {
+          inputs[i].classList.add('wrong');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

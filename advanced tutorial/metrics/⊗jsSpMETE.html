@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p class="top">T: 0</p>
+  <p class="left">H: 0</p>
+  <div id="elem">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, repellendus nisi temporibus necessitatibus quas
+    explicabo culpa autem fugiat? Atque laborum dolorem eius sit explicabo iusto unde molestiae mollitia ratione
+    repellendus.
+    Mollitia doloribus architecto numquam, saepe omnis incidunt necessitatibus, corporis facilis maxime, possimus
+    maiores ad sint blanditiis vel vero debitis hic quis minima temporibus nam itaque quibusdam? Nemo voluptatem illo
+    quod? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, optio voluptatem exercitationem magni labore
+    dolorum similique explicabo doloribus assumenda
+    auctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoaucto.
+  </div>
+
+  <!-- #1 -->
+  <button class="btn1">elemSize</button>
+
+  <!-- ⊗jsSpMESc -->
+  <button class="btn2">scrollSize</button>
+
+  <style>
+    #elem {
+      width: 300px;
+      height: 150px;
+      margin: 50px auto;
+      padding: 25px;
+      background: #CFF5BF;
+      border: 25px solid #F0D7A1;
+      overflow: auto;
+      text-align: justify;
+    }
+  </style>
+
+  <script>
+    let elem = document.querySelector('#elem');
+    let topScroll = document.querySelector('.top');
+    let left = document.querySelector('.left');
+
+    //⊗jsSpMECS
+    let btn1 = document.querySelector('.btn1');
+    btn1.addEventListener('click', function () {
+      console.log(elem.clientWidth, 'clientWidth');
+      console.log(elem.clientHeight, 'clientHeight');
+      //⊗jsSpMEFS
+      console.log(elem.offsetWidth, 'offsetWidth');
+      console.log(elem.offsetHeight, 'offsetHeight');
+      console.log(elem.offsetWidth - elem.clientWidth,
+      'разница'); //данная величина содержит в себе размеры границы и полосы прокрутки.
+
+      //⊗jsSpMESS
+      console.log(elem.scrollWidth, 'scrollWidth');
+      console.log(elem.scrollHeight, 'scrollHeight');
+      console.log(elem.scrollHeight - elem.offsetHeight, 'разница');
+      /* содержит padding-bottom и текст после нижней
+            границы дива. */
+    });
+
+    //⊗jsSpMESc
+    let btn2 = document.querySelector('.btn2');
+    btn2.addEventListener('click', function () {
+      topScroll.textContent = 'T: ' + elem.scrollTop;
+      left.textContent = 'L: ' + elem.scrollLeft;
+      console.log(elem.scrollHeight - elem.scrollTop, 'scrollHeight - scrollTop');
+      /* содержит clientHeight: padding
+           кроме нижнего и
+           текст. */
+      
+      console.log(elem.scrollHeight - elem.offsetHeight - elem.scrollTop, 'scrollHeight - offsetHeight - scrollTop');// -64
+    });
+  </script>
+</body>
+
+</html>

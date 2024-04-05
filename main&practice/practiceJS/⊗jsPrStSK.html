@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <table class="table"></table>
+  <input class="input" type="text">
+  <button class="caps-btn">CapsLock</button>
+
+  <style>
+    td {
+      width: 50px;
+      height: 50px;
+      border: 2px solid black;
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid red;
+    }
+
+    .caps-btn {
+      width: 100px;
+    }
+  </style>
+
+  <script>
+    let table = document.querySelector('.table');
+    let input = document.querySelector('.input');
+    let capsBtn = document.querySelector('.caps-btn');
+    let capsFlag = false;
+    let keysArr = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+      '0'
+    ]
+
+    capsBtn.addEventListener('click', function setFlag() {
+      if (capsFlag == false) {
+        capsFlag = true;
+      } else {
+        capsFlag = false;
+      }
+
+      console.log(capsFlag);
+    });
+
+    function createTable(arr) {
+      for (let i = 0; i < 3; i++) {
+        let tr = document.createElement('tr');
+        for (let i = 0; i < arr.length / 3; i++) {
+          let td = document.createElement('td');
+          let key = document.createElement('button');
+          key.type = 'button';
+          td.appendChild(key);
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      }
+    }
+
+    function addKey(arr) {
+      let i = 0;
+      for (let elem of arr) {
+        keys[i].textContent = elem;
+        i++;
+      }
+    }
+
+    createTable(keysArr);
+    let keys = table.querySelectorAll('button');
+    addKey(keysArr);
+
+    for (let key of keys) {
+      key.addEventListener('click', function func() {
+        if (capsFlag == true) {
+          input.value += this.textContent.toUpperCase();
+        } else {
+          input.value += this.textContent;
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

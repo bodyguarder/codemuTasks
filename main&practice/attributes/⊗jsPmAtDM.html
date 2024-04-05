@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p class="elem">elem</p>
+  <p class="elem">elem</p>
+  <p class="elem">elem</p>
+  <p class="elem">elem</p>
+  <p class="elem">elem</p>
+
+  <script>
+    let elems = document.querySelectorAll('.elem');
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].setAttribute('data-num', i + 1);
+    } 
+  </script>
+</body>
+</html>

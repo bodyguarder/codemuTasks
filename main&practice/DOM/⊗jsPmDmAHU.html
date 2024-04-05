@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <ul>
+    <li class="list1">1</li>
+    <li class="list1">2</li>
+    <li class="list1">3</li>
+    <li class="list1">4</li>
+    <li class="list1">5</li>
+  </ul>
+
+  <!-- #2 -->
+  <ul>
+    <li class="list2">1</li>
+    <li class="list2">2</li>
+    <li class="list2">3</li>
+    <li class="list2">4</li>
+    <li class="list2">5</li>
+  </ul>
+
+  <!-- #3 -->
+  <ul>
+    <li class="list3">1</li>
+    <li class="list3">2</li>
+    <li class="list3">3</li>
+    <li class="list3">4</li>
+    <li class="list3">5</li>
+  </ul>
+
+  <script>
+    //#1
+    let list1 = document.querySelectorAll('.list1');
+    for (let elem of list1) {
+      elem.addEventListener('click', increase);
+    }
+
+    function increase() {
+      this.innerHTML = Number(this.innerHTML) + 1;
+    }
+
+    //#2
+    let list2 = document.querySelectorAll('.list2');
+
+    for (let elem of list2) {
+      elem.addEventListener('click', function func() {
+        this.innerHTML = Number(this.innerHTML) + 1;
+        this.removeEventListener('click', func);
+      });
+    }
+
+    //#3
+    let list3 = document.querySelectorAll('.list3');
+
+    for (let elem of list3) {
+      elem.addEventListener('click', function func() {
+        this.innerHTML = Number(this.innerHTML) + 1;
+        if (this.innerHTML >= 10) {
+          this.removeEventListener('click', func);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

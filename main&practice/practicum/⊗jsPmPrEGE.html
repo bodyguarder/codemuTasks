@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <!-- #2 -->
+  <table class="table">
+    <tr>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+  </table>
+
+  <style>
+    td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+    }
+  </style>
+
+  <script>
+    //#1
+    let list = document.querySelector('.list');
+    let lis = list.querySelectorAll('li');
+
+    for (let li of lis) {
+      li.addEventListener('click', function func() {
+        let input = document.createElement('input');
+        input.value = li.textContent;
+        li.textContent = '';
+        li.appendChild(input);
+
+        input.addEventListener('blur', function func2() {
+          li.textContent = this.value;
+          li.addEventListener('click', func);
+        });
+
+        li.removeEventListener('click', func);
+      });
+    }
+
+    //#2
+    let table = document.querySelector('.table');
+    let tds = table.querySelectorAll('td');
+
+    for (let td of tds) {
+      td.addEventListener('click', function func3() {
+        let input = document.createElement('input');
+        input.value = td.textContent;
+        td.textContent = '';
+        td.appendChild(input);
+
+        input.addEventListener('blur', function func4() {
+          td.textContent = this.value;
+          td.addEventListener('click', func3);
+        });
+
+        td.removeEventListener('click', func3);
+      });
+    }
+  </script>
+</body>
+
+</html>

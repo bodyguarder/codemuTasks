@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="elem">Lorem, ipsum dolor.</div>
+  <button class="btn">btn</button>
+
+  <script>
+    let elem = document.querySelector('.elem');
+    let btn = document.querySelector('.btn');
+
+    btn.addEventListener('click', function func() {
+      elem.style.fontSize = '20px';
+      elem.style.borderTop = '5px solid red';
+      elem.style.backgroundColor = 'blue';
+    });
+  </script>
+</body>
+</html>

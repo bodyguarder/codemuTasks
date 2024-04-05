@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #11 -->
+  <p class="text11">Lorem, ipsum dolor.</p>
+  <p class="text11">Lorem, ipsum dolor.</p>
+  <p class="text11">Lorem, ipsum dolor.</p>
+  <button class="btn11">btn11</button>
+
+  <!-- #12 -->
+  <a class="link12" href="https://code.mu/ru/javascript/book/prime/">code.mu</a>
+  <a class="link12" href="https://code.mu/ru/javascript/book/prime/">code.mu</a>
+  <a class="link12" href="https://code.mu/ru/javascript/book/prime/">code.mu</a>
+
+  <button class="btn12">btn12</button>
+
+  <!-- #13 -->
+  <a class="link13" href="http://code.mu/ru/javascript/book/prime/">code.mu</a>
+  <a class="link13" href="https://code.mu/ru/javascript/book/prime/">code.mu</a>
+  <a class="link13" href="http://code.mu/ru/javascript/book/prime/">code.mu</a>
+
+  <button class="btn13">btn13</button>
+
+  <!-- #14 -->
+  <p class="text14">2</p>
+  <p class="text14">4</p>
+  <p class="text14">6</p>
+
+  <!-- #15 -->
+  <input class="input15" type="text" value="31.12.2016">
+
+  <!-- #16 -->
+  <input class="input16" type="text" value="0">
+  <button class="btn16_plus">+1</button>
+  <button class="btn16_minus">-1</button>
+
+  <!-- #17 -->
+  <input class="input17" type="text" value="0">
+  <p class="text17">text17</p>
+  <p class="text17">text17</p>
+
+  <!-- #18 -->
+  <div class="div18">Lorem ipsum dolor sit amet consectetur.</div>
+  <div class="div18">Lorem ipsum dolor sit amet consectetur.</div>
+
+  <script>
+    //#11
+    let text11 = document.querySelectorAll('.text11');
+    let btn11 = document.querySelector('.btn11');
+
+    btn11.addEventListener('click', function func() {
+      for (let i = 0; i < text11.length; i++) {
+        text11[i].innerHTML += (i + 1);
+      }
+    });
+
+    //#12
+    let link12 = document.querySelectorAll('.link12');
+    let btn12 = document.querySelector('.btn12');
+
+    btn12.addEventListener('click', function func() {
+      for (let i = 0; i < link12.length; i++) {
+        link12[i].innerHTML += '(' + link12[i] + ')';
+      }
+    });
+
+    //#13
+    let link13 = document.querySelectorAll('.link13');
+    let btn13 = document.querySelector('.btn13');
+
+    btn13.addEventListener('click', function func() {
+      for (let i = 0; i < link13.length; i++) {
+        if (link13[i].href.startsWith('http://')) {
+          link13[i].innerHTML += '&rarr;';
+        }
+      }
+    });
+
+    //#14
+    let text14 = document.querySelectorAll('.text14');
+    for (let elem of text14) {
+      elem.addEventListener('click', function func() {
+        this.innerHTML = Math.pow(Number(this.innerHTML), 2);
+      });
+    }
+
+    //#15
+    let days = ['вс', 'пн', 'вт', 'ср',
+      'чт', 'пт', 'сб'
+    ];
+    let input15 = document.querySelector('.input15');
+
+    function getDate(elem) {
+      let arr = elem.value.split('.');
+      let newArr = [];
+      for (let i = arr.length - 1; i >= 0; i--) {
+        newArr.push(arr[i]);
+      }
+      return newArr.join(',');
+    };
+
+    input15.addEventListener('blur', function func() {
+      let date = new Date(getDate(input15));
+      let day = date.getDay();
+      console.log(days[day]);
+    });
+
+    //#16
+    let input16 = document.querySelector('.input16');
+    let btn16_plus = document.querySelector('.btn16_plus');
+    let btn16_minus = document.querySelector('.btn16_minus');
+
+    btn16_plus.addEventListener('click', function func() {
+      input16.value = Number(input16.value) + 1;
+    });
+
+    btn16_minus.addEventListener('click', function func() {
+      if (input16.value > 0) {
+        input16.value = Number(input16.value) - 1;
+      } else {
+        input16.value = 0;
+      }
+    });
+
+    //#17
+    let input17 = document.querySelector('.input17');
+    let text17 = document.querySelectorAll('.text17');
+
+    for (let elem of text17) {
+      elem.addEventListener('click', function func() {
+        input17.value = Number(input17.value) + 1;
+      });
+    }
+
+    //#18
+    let div18 = document.querySelectorAll('.div18');
+
+    for (let elem of div18) {
+      elem.addEventListener('click', function func() {
+        this.innerHTML = this.innerHTML.substr(0, 10) + '...';
+      });
+    }
+  </script>
+</body>
+
+</html>

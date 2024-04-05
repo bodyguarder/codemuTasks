@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="btn1">btn1</button>
+  <!-- ⊗jsSpMWPS -->
+  <button class="btn2">btn2</button>
+  <button class="btn3">btn3</button>
+  <button class="btn4">btn4</button>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 2000px;
+    }
+
+    button {
+      max-width: 50px;
+      width: 100%;
+    }
+
+    .btn4 {
+      margin-top: auto;
+    }
+  </style>
+  <script>
+    let btn1 = document.querySelector('.btn1');
+    let scrollHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+    btn1.addEventListener('click', function () {
+      console.log(window.pageYOffset);
+      console.log(scrollHeight - window.pageYOffset);
+    })
+
+    let btn2 = document.querySelector('.btn2');
+    btn2.addEventListener('click', function () {
+      window.scrollTo({
+        top: 300,
+        behavior: 'smooth',
+      });
+    });
+
+    let btn3 = document.querySelector('.btn3');
+    btn3.addEventListener('click', function () {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    });
+
+    let btn4 = document.querySelector('.btn4');
+    btn4.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+  </script>
+</body>
+
+</html>

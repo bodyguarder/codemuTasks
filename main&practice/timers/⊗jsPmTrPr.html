@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <button class="btn1">btn1</button>
+  <p class="text1">0</p>
+
+  <!-- #2 -->
+  <button class="btn2">btn2</button>
+  <p class="text2">10</p>
+
+  <!-- #3 -->
+  <input class="input3" type="text" value="2">
+
+  <!-- #4 -->
+  <input class="input4" type="text" value="15">
+  <p class="text4">text4</p>
+
+  <!-- #5 -->
+  <input class="input5" type="text" value="10">
+  <button class="btn5">btn5</button>
+  <p class="text5">text5</p>
+
+  <!-- #6 -->
+  <p class="text6">0</p>
+  <button class="btn6_start">start</button>
+  <button class="btn6_stop">stop</button>
+
+  <!-- #7 -->
+  <p class="text7">text7</p>
+
+  <!-- #8 -->
+  <p class="text8">text8</p>
+
+  <script>
+    //#1
+    let btn1 = document.querySelector('.btn1');
+    let text1 = document.querySelector('.text1');
+
+    btn1.addEventListener('click', func);
+
+    function func() {
+      setInterval(function () {
+        text1.innerHTML = Number(text1.innerHTML) + 1;
+      }, 1000);
+    }
+
+    //#2
+    let btn2 = document.querySelector('.btn2');
+    let text2 = document.querySelector('.text2');
+    let timerId2;
+
+    btn2.addEventListener('click', func);
+
+    function func() {
+      timerId2 = setInterval(function () {
+        text2.innerHTML = Number(text2.innerHTML) - 1;
+        if (Number(text2.innerHTML) <= 0) {
+          clearInterval(timerId2);
+        }
+      }, 1000);
+    }
+
+    //#3
+    let input3 = document.querySelector('.input3');
+
+    input3.addEventListener('blur', function func() {
+      let self = this;
+      setInterval(function () {
+        self.value = Number(self.value) ** 2;
+      }, 1000);
+    });
+
+    //#4
+    let input4 = document.querySelector('.input4');
+    let text4 = document.querySelector('.text4');
+    let timerId4;
+
+    input4.addEventListener('blur', function func() {
+      text4.innerHTML = this.value;
+      timerId4 = setInterval(function () {
+        text4.innerHTML = Number(text4.innerHTML) - 1;
+        console.log(Number(text4.innerHTML));
+        if (Number(text4.innerHTML) <= 0) {
+          clearInterval(timerId4);
+        }
+      }, 1000);
+    });
+
+    //#5
+    let input5 = document.querySelector('.input5');
+    let btn5 = document.querySelector('.btn5');
+    let text5 = document.querySelector('.text5');
+    let timerId5;
+
+    btn5.addEventListener('click', function func() {
+      text5.innerHTML = input5.value;
+      timerId = setInterval(function () {
+        text5.innerHTML = Number(text5.innerHTML) - 1;
+
+        if (Number(text5.innerHTML) <= 0) {
+          clearInterval(timerId5);
+        }
+      }, 1000);
+    });
+
+    //#6
+    let text6 = document.querySelector('.text6');
+    let btn6_start = document.querySelector('.btn6_start');
+    let btn6_stop = document.querySelector('.btn6_stop');
+    let timerId6;
+
+    btn6_start.addEventListener('click', function func() {
+      timerId6 = setInterval(function () {
+        text6.innerHTML = Number(text6.innerHTML) + 1;
+      }, 1000);
+    });
+
+    btn6_stop.addEventListener('click', function func() {
+      clearInterval(timerId6);
+    });
+
+    //#7
+    let text7 = document.querySelector('.text7');
+
+    function setElemColor() {
+      text7.style.backgroundColor = 'red';
+      text7.style.display = 'inline-block';
+      setInterval(function () {
+        if (text7.style.backgroundColor == 'red') {
+          text7.style.backgroundColor = 'green';
+        } else {
+          text7.style.backgroundColor = 'red';
+        }
+      }, 1000);
+    }
+    setElemColor();
+
+    //#8
+    let text8 = document.querySelector('.text8');
+
+    function twoDigits(num) {
+      return ('0' + num).slice(-2);
+    }
+
+    function getCurrentTime() {
+      setInterval(function () {
+        let date = new Date();
+        text8.textContent = twoDigits(date.getHours()) + ':' + twoDigits(date.getMinutes()) + ':' +
+        twoDigits(date.getSeconds());
+      }, 1000);
+    }
+
+    getCurrentTime();
+  </script>
+</body>
+
+</html>

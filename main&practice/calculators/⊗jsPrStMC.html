@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #2 -->
+  <div class="box2">
+    #2
+    <input class="input" type="text">
+    <input class="input" type="text">
+    <input class="input" type="text">
+    <span class="res">NaN</span>
+  </div>
+
+  <!-- #3 -->
+  <div class="box3">
+    #3
+    <input class="input3" type="text">
+    <button class="btn3">button</button>
+  </div>
+
+  <!-- #4 5-->
+  <div class="box4">
+    #4 5
+    <input class="input4" type="text">
+    <input class="input4" type="text">
+    <button class="btn4">button</button>
+  </div>
+
+  <!-- #6-->
+  <div class="box6">
+    #6
+    <input class="input6" type="text">
+    <input class="input6" type="text">
+    <button class="btn6">button</button>
+  </div>
+
+  <script>
+    //#2
+    let box2 = document.querySelector('.box2');
+    let inputs = box2.querySelectorAll('.input');
+    let res = box2.querySelector('.res');
+    let arr = [];
+
+    inputs[2].addEventListener('blur', function func2() {
+      for (let input of inputs) {
+        arr.push(input.value);
+      }
+      arr.sort(function (a, b) {
+        return a - b;
+      });
+      let result = (arr[2] == Math.sqrt(arr[0] ** 2 + arr[1] ** 2));
+      res.textContent = result;
+      arr.splice(0, arr.length);
+    });
+
+    //#3
+    let box3 = document.querySelector('.box3');
+    let input3 = box3.querySelector('.input3');
+    let btn3 = box3.querySelector('.btn3');
+
+    btn3.addEventListener('click', () => func3(input3.value));
+
+    function func3(num) {
+      for (let i = 2; i <= num; i++) {
+        if (num % i == 0) {
+          console.log(i);
+        }
+      }
+    }
+
+    //#4 5
+    let box4 = document.querySelector('.box4');
+    let inputs4 = box4.querySelectorAll('.input4');
+    let btn4 = box4.querySelector('.btn4');
+
+    btn4.addEventListener('click', () => func4(inputs4));
+
+    function func4(arr) {
+      let num;
+      let bufArr = [];
+      if (arr[0].value < arr[1].value) {
+        num = arr[0].value;
+      } else {
+        num = arr[1].value;
+      }
+
+      for (let i = 2; i <= num; i++) {
+        if (arr[0].value % i == 0) {
+          if (arr[1].value % i == 0) {
+            console.log(i);
+            bufArr.push(i);
+          }
+        }
+      }
+
+      bufArr.sort(function func(a, b) {
+        return a - b;
+      });
+
+      console.log(bufArr);
+      console.log(bufArr[bufArr.length - 1] + ' is max value');
+    }
+
+    //#6
+    let box6 = document.querySelector('.box6');
+    let inputs6 = box6.querySelectorAll('.input6');
+    let btn6 = box6.querySelector('.btn6');
+
+    btn6.addEventListener('click', () => func6(inputs6));
+
+    function func6(arr) {
+      let d = 1;
+      while (d % arr[0].value != 0 || d % arr[1].value != 0) {
+        d++;
+      }
+      console.log(d);
+    }
+  </script>
+</body>
+
+</html>

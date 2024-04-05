@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <input class="input1" type="text" value="input1">
+
+  <!-- #2 -->
+  <input class="input2" type="text" value="input2">
+
+  <!-- #3 -->
+  <input class="input3" type="text" value="input3">
+
+  <script>
+    //#1
+    let input1 = document.querySelector('.input1');
+    input1.addEventListener('focus', function func() {
+      input1.value = 1;
+    });
+    input1.addEventListener('blur', function func() {
+      input1.value = 2;
+    });
+
+    //#2
+    let input2 = document.querySelector('.input2');
+    input2.addEventListener('blur', function func() {
+      alert(Math.pow(Number(input2.value), 2));
+    });
+
+    //#3
+    let input3 = document.querySelector('.input3');
+    input3.addEventListener('focus', function func() {
+      input3.value = '';
+    });
+    
+  </script>
+</body>
+</html>

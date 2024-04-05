@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <input id="elem1">
+
+  <!-- #2 -->
+  <input id="elem2">
+
+  <!-- ⊗jsPmAtRm -->
+  <input id="elem3" value="text">
+
+  <!-- ⊗jsPmAtCh -->
+  <input id="elem4" value="text">
+
+  <script>
+    //#1
+    let elem1 = document.querySelector('#elem1');
+    elem1.setAttribute('value', 'text');
+
+    //#2
+    let elem2 = document.querySelector('#elem2');
+    elem2.setAttribute('class', 'valid');
+
+    //⊗jsPmAtRm
+    let elem3 = document.querySelector('#elem3');
+    elem3.removeAttribute('value');
+
+    //⊗jsPmAtCh
+    let elem4 = document.querySelector('#elem4');
+    console.log(elem4.hasAttribute('value'));
+  </script>
+</body>
+</html>

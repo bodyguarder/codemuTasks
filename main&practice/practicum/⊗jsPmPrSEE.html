@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <div id="parent">
+    <p id="elem">text</p>
+    <input id="input">
+  </div>
+
+  <!-- #2 -->
+  <div id="parent2">
+    <p id="elem2">text2</p>
+  </div>
+
+  <script>
+    //#1
+    let elem = document.querySelector('#elem');
+    let input = document.querySelector('#input');
+
+    input.addEventListener('input', function func() {
+      elem.textContent = this.value;
+    });
+
+    //#2
+    let elem2 = document.querySelector('#elem2');
+    let parent2 = document.querySelector('#parent2');
+
+    elem2.addEventListener('click', function func() {
+      let input2 = document.createElement('input');
+      parent2.appendChild(input2);
+
+      input2.addEventListener('blur', function () {
+        elem2.textContent = this.value;
+        this.remove();
+      });
+    });
+  </script>
+</body>
+</html>

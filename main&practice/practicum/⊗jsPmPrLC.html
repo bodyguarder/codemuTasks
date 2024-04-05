@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <ul id="elem"></ul>
+
+  <script>
+    //#1
+    let elem = document.querySelector('#elem')
+    let arr1 = [1, 2, 3, 4, 5];
+    for (let item of arr1) {
+      let elem1 = document.createElement('li');
+      elem1.textContent = item;
+      elem.appendChild(elem1);
+
+      //#2
+      elem1.addEventListener('click', function func1() {
+        console.log(this.textContent);
+      });
+
+      //#3
+      elem1.addEventListener('click', function func2() {
+        this.textContent = this.textContent + '!';
+        //#4
+        elem1.removeEventListener('click', func2);
+      });
+    }
+  </script>
+</body>
+</html>

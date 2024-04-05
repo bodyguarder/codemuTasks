@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <input class="input1" type="text">
+  <input class="input1" type="text">
+  <input class="input1" type="text">
+  <input class="input1" type="text">
+  <input class="input1" type="text">
+  <br>
+  <!-- #2 -->
+  <input class="input2" type="text">
+  <input class="input2" type="text">
+  <input class="input2" type="text">
+  <input class="input2" type="text">
+  <input class="input2" type="text">
+
+  <script>
+    //#1
+    let inputs1 = document.querySelectorAll('.input1');
+    let map1 = new Map;
+    let i = 1;
+    for (let input1 of inputs1) {
+      map1.set(input1, i++);
+    }
+    console.log(map1);
+
+    for (let input1 of inputs1) {
+      input1.addEventListener('click', function func() {
+        this.value += map1.get(this);
+      });
+    }
+    
+    //#2
+    let inputs2 = document.querySelectorAll('.input2');
+    let map2 = new Map;
+    for (let input2 of inputs2) {
+      map2.set(input2, []);
+    }
+
+    for (let input2 of inputs2) {
+      input2.addEventListener('keypress', function func(event) {
+        if (event.key == 'Enter') {
+          map2.get(this).push(this.value);
+          this.value = '';
+        }
+      });
+
+      input2.addEventListener('blur', function func() {
+        console.log(map2.get(this));
+      });
+    }
+  </script>
+</body>
+</html>

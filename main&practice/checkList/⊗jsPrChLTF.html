@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <input id="input">
+    <ul id="list"></ul>
+  </div>
+  
+  <style>
+    body {
+      text-align: center;
+    }
+
+    #input,
+    #list {
+      display: inline-block;
+    }
+
+    #list {
+      padding: 0;
+      list-style-type: none;
+    }
+
+    #list span {
+      margin-right: 5px;
+    }
+
+    #list .remove,
+    #list .mark {
+      color: blue;
+      cursor: pointer;
+    }
+
+    #list .remove:hover,
+    #list .mark:hover {
+      text-decoration: underline;
+    }
+
+    #list .done {
+      text-decoration: line-through;
+    }
+
+    #wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+
+  <script>
+    let input = document.querySelector('#input');
+    let list = document.querySelector('#list');
+
+    input.addEventListener('keypress', function (event) {
+      if (event.key == 'Enter') {
+        let li = document.createElement('li');
+
+        let task = document.createElement('span');
+        task.classList.add('task');
+        task.textContent = this.value;
+        task.addEventListener('dblclick', function func() {
+          let input = document.createElement('input');
+          input.value = task.textContent;
+          task.textContent = '';
+          task.appendChild(input);
+          input.addEventListener('blur', function func() {
+            task.textContent = input.value;
+          });
+        });
+        li.appendChild(task);
+
+        let remove = document.createElement('span');
+        remove.classList.add('remove');
+        remove.textContent = 'удалить';
+        remove.addEventListener('click', function func() {
+          this.parentElement.remove();
+        });
+        li.appendChild(remove);
+
+        let mark = document.createElement('span');
+        mark.classList.add('mark');
+        mark.textContent = 'сделано';
+        mark.addEventListener('click', function func() {
+          this.parentElement.firstElementChild.classList.add('done');
+        });
+        li.appendChild(mark);
+
+        list.appendChild(li);
+
+        this.value = '';
+      }
+    });
+  </script>
+</body>
+
+</html>

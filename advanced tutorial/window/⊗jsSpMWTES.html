@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>btn</button>
+  <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, officiis expedita totam provident placeat
+    obcaecati molestiae error laudantium sit quos dolore, saepe ipsa quia, quibusdam ipsum unde quasi atque modi.</div>
+
+  <style>
+    div {
+      margin: 1500px auto;
+      width: 300px;
+      border: 2px solid red;
+    }
+  </style>
+
+  <script>
+    let elem = document.querySelector('div');
+    let btn = document.querySelector('button');
+    btn.addEventListener('click', function () {
+      elem.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    });
+
+    window.addEventListener('scroll', function () {
+      console.log(window.pageYOffset);
+    });
+  </script>
+</body>
+
+</html>

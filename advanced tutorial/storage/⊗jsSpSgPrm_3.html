@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="list"></ul>
+  <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+  <button id="button">add sticker</button>
+
+  <style>
+    body {
+      display: flex;
+      gap: 10px;
+    }
+
+    #list {
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      margin-bottom: 5px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      background-color: darkgray;
+      border-radius: 5px;
+    }
+
+    .del-btn {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  </style>
+
+  <script>
+    let textarea = document.querySelector('#textarea');
+    let button = document.querySelector('#button');
+    let body = document.querySelector('body');
+    let list = document.querySelector('#list');
+    button.addEventListener('click', function func() {
+      let text = textarea.value;
+      localStorage.setItem(text, text);
+      createStick(text);
+    });
+
+    function createSticks() {
+      let values = Object.values(localStorage);
+      for (let key in values) {
+        createStick(values[key]);
+      }
+    }
+
+    if (localStorage.length > 0) {
+      createSticks();
+    }
+
+    function createStick(key) {
+      let li = document.createElement('li');
+      let stick = document.createElement('span');
+      stick.href = '';
+      stick.textContent = localStorage.getItem(key);
+      stick.addEventListener('dblclick', function () {
+        let input = document.createElement('input');
+        input.value = this.textContent;
+        let key = input.value;
+        this.textContent = '';
+        this.appendChild(input);
+        input.focus();
+        input.addEventListener('blur', function () {
+          localStorage.removeItem(key);
+          console.log(key);
+          let newKey = this.value;
+          this.parentElement.textContent = this.value;
+          localStorage.setItem(newKey, newKey);
+        });
+      });
+      let delStick = document.createElement('a');
+      delStick.href = '';
+      delStick.textContent = 'delete';
+      delStick.classList.add('del-btn');
+      delStick.addEventListener('click', function (event) {
+        let parent = this.parentElement;
+        let span = parent.querySelector('span')
+        console.log(span);
+        localStorage.removeItem(span.textContent);
+        this.parentElement.remove();
+        event.preventDefault();
+      });
+      li.appendChild(delStick);
+      li.appendChild(stick);
+      list.appendChild(li);
+    }
+  </script>
+</body>
+
+</html>

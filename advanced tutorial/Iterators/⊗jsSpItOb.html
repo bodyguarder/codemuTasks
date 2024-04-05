@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      a: 1,
+      b: 2,
+      c: 3
+    };
+
+    function *func(obj) {
+      for (let key in obj) {
+        yield [key, obj[key]];
+      }
+    }
+
+    let iter = func(obj);
+    for (let elem of iter) {
+      console.log(elem);
+    }
+    console.log(obj[Symbol.iterator]);
+
+    //⊗jsSpItIOC
+    function *func1() {
+      for (let key in this) {
+        yield {key: key, val: this[key]};
+      }
+    }
+
+    obj[Symbol.iterator] = func1;
+    console.log(obj[Symbol.iterator]);
+
+    for (let elem of obj) {
+      console.log(elem);
+    }
+    
+  </script>
+</body>
+
+</html>

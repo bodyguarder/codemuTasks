@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="" id="left">←</a>
+  <a href="" id="right">→</a>
+  <img id="slider" src="">
+
+  <script>
+    let slider = document.querySelector('#slider');
+    let texts = ['1.png', '2.png',
+      '3.png'
+    ];
+    let left = document.querySelector('#left');
+    let right = document.querySelector('#right');
+    let i = 0;
+    slider.src = texts[0];
+
+    let timerId = setInterval(() => {
+      i++;
+      if (i > texts.length - 1) {
+        i = 0;
+      }
+      slider.src = texts[i];
+    }, 5000);
+
+    right.addEventListener('click', function func(event) {
+      i++;
+      if (i > texts.length - 1) {
+        i = 0;
+      }
+      slider.src = texts[i];
+      console.log(i);
+      event.preventDefault();
+    });
+
+    left.addEventListener('click', function func(event) {
+      i--;
+      if (i < 0) {
+        i = texts.length - 1;
+      }
+      slider.src = texts[i];
+      console.log(i);
+      event.preventDefault();
+    });
+  </script>
+</body>
+
+</html>

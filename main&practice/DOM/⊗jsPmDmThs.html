@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <input class="input1" type="text" value="input1">
+
+  <!-- #2 -->
+  <button class="btn2" value="1">btn2</button>
+
+  <script>
+    //#1
+    let input1 = document.querySelector('.input1');
+    input1.addEventListener('focus', function func() {
+      this.value = 1;
+    });
+    input1.addEventListener('blur', function func() {
+      this.value = 2;
+    });
+
+    //#2
+    let btn2 = document.querySelector('.btn2');
+    btn2.addEventListener('click', function func() {
+      this.value = Number(this.value) + 1;
+      console.log(this.value);
+    });
+  </script>
+</body>
+</html>

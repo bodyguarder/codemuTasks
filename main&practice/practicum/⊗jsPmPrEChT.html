@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <ul class="list1"></ul>
+
+  <style>
+    .text-conf {
+      text-decoration: line-through;
+    }
+  </style>
+
+  <script>
+    //#1 2 3 4 5
+    let arr1 = [0, 1, 2, 3, 4, 5];
+    let list1 = document.querySelector('.list1');
+
+    function func1() {
+      let input = document.createElement('input');
+      input.value = this.textContent;
+      this.textContent = '';
+      this.appendChild(input);
+      input.focus();
+      let self = this;
+      input.addEventListener('blur', function func2() {
+        self.textContent = this.value;
+        self.addEventListener('click', func1);
+      });
+      this.removeEventListener('click', func1);
+    }
+
+    function addDelLink(li) {
+      let link = document.createElement('a');
+      link.href = '';
+      link.textContent = 'delete';
+      li.appendChild(link);
+      link.addEventListener('click', function (event) {
+        li.remove();
+        event.preventDefault();
+      });
+    }
+
+    function textConf(li, span) {
+      let link = document.createElement('a');
+      link.href = '';
+      link.textContent = 'line-through';
+      li.appendChild(link);
+      link.addEventListener('click', function (event) {
+        span.classList.add('text-conf')
+        event.preventDefault();
+      });
+    }
+
+    for (let elem of arr1) {
+      let li = document.createElement('li');
+      let span = document.createElement('span');
+      li.appendChild(span);
+      span.textContent = elem;
+      list1.appendChild(li);
+      span.addEventListener('click', func1);
+      addDelLink(li);
+      textConf(li, span);
+    }
+
+    let input3 = document.createElement('input');
+    input3.value = 'add LI';
+    input3.type = 'button';
+    list1.insertAdjacentElement('afterEnd', input3);
+    input3.addEventListener('click', function func3() {
+      let spans = list1.querySelectorAll('span');
+      let li = document.createElement('li');
+      let span = document.createElement('span');
+      span.textContent = Number(spans[spans.length - 1].textContent) + 1;
+      li.appendChild(span);
+      span.addEventListener('click', func1);
+      list1.appendChild(li);
+      addDelLink(li);
+      textConf(li, span)
+    });
+  </script>
+</body>
+
+</html>

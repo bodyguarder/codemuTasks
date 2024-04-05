@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #19 -->
+  <input class="input19" type="text" value="input19">
+  <button class="btn19">btn19</button>
+
+  <!-- #20 -->
+  <input class="input20" type="text" value="Lorem, ipsum dolor.">
+  <button class="btn20">btn20</button>
+
+  <!-- #21 -->
+  <span><input class="input21" type="text" value="0">F</span>
+  <button class="btn21">btn21</button>
+  <p class="text21">text21</p>
+
+  <!-- #22 -->
+  <input class="input22" type="text" value="3">
+  <button class="btn22">btn22</button>
+  <p class="text22">text22</p>
+
+  <!-- #23 -->
+  <input class="input23" type="text" value="-1">
+  <input class="input23" type="text" value="6">
+  <input class="input23" type="text" value="7">
+  <button class="btn23">btn23</button>
+  <p class="text23">text23</p>
+
+  <script>
+    //#19
+    let input19 = document.querySelector('.input19');
+    let btn19 = document.querySelector('.btn19');
+    let letters = '0123456789ABCDEF';
+
+    function getRandInt(max, min) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    btn19.addEventListener('click', function func() {
+      let pass = '';
+      for (let i = 0; i < 8; i++) {
+        pass += letters[getRandInt(0, 15)];
+      }
+      input19.value = pass;
+    });
+
+    //#20
+    let input20 = document.querySelector('.input20');
+    let btn20 = document.querySelector('.btn20');
+
+    btn20.addEventListener('click', function func() {
+      let arr = input20.value.split('');
+      for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+      input20.value = arr.join('');
+    });
+
+    //#21
+    let input21 = document.querySelector('.input21');
+    let btn21 = document.querySelector('.btn21');
+    let text21 = document.querySelector('.text21');
+
+    btn21.addEventListener('click', function func() {
+      text21.innerHTML = 5 * (Number(input21.value) - 32) / 9 + 'C';
+    });
+
+    //#22
+    let input22 = document.querySelector('.input22');
+    let btn22 = document.querySelector('.btn22');
+    let text22 = document.querySelector('.text22');
+
+    function factorial(n) {
+      if (n == 1) {
+        return 1;
+      } else {
+        return n * factorial(n - 1);
+      }
+    }
+
+    btn22.addEventListener('click', function func() {
+      text22.innerHTML = factorial(Number(input22.value));
+    });
+
+    //#23
+    let input23 = document.querySelectorAll('.input23');
+    let btn23 = document.querySelector('.btn23');
+    let text23 = document.querySelector('.text23');
+
+    btn23.addEventListener('click', function func() {
+      let a = Number(input23[0].value);
+      let b = Number(input23[1].value);
+      let c = Number(input23[2].value);
+      let d = Math.pow(b, 2) - 4 * a * c;
+      if (d > 0) {
+        let x1 = (-b + Math.sqrt(d)) / 2 * a;
+        let x2 = (-b - Math.sqrt(d)) / 2 * a;
+        return text23.innerHTML = String(x1) + ' ' + String(x2);
+      }
+      if (d = 0) {
+        let x = (-b) / 2 * a;
+        return text23.innerHTML = x;
+      } else {
+        return text23.innerHTML = 'no sqrt';
+      }
+    });
+  </script>
+</body>
+
+</html>

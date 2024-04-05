@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <div id="elem1"></div>
+
+  <!-- ⊗jsSpStyCRV -->
+  <div id="elem2"></div>
+
+  <!-- ⊗jsSpStyDSA -->
+  <input class="input3" type="text">
+
+  <style>
+    #elem1,
+    #elem2 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+    }
+
+    #elem2 {
+      font-size: 2em;
+    }
+
+    /* ⊗jsSpStyDSA */
+    [data-type="lowLim"] {
+      color: green;
+    }
+
+    [data-type="midLim"] {
+      color: orange;
+    }
+
+    [data-type="highLim"] {
+      color: red;
+    }
+  </style>
+
+  <script>
+    //#1
+    let elem1 = document.querySelector('#elem1');
+    let computedStyle = getComputedStyle(elem1);
+    elem1.addEventListener('click', function func() {
+      console.log(computedStyle.width, computedStyle.height);
+    });
+
+    elem1.addEventListener('dblclick', function func() {
+      console.log(parseInt(computedStyle.width) * 2);
+      elem1.style.width = parseInt(computedStyle.width) * 2 + 'px';
+      elem1.style.height = parseInt(computedStyle.height) * 2 + 'px';
+    });
+
+    //⊗jsSpStyCRV
+    let elem2 = document.querySelector('#elem2');
+    elem2.addEventListener('click', function () {
+      console.log(getComputedStyle(elem2).fontSize);
+    });
+
+    //⊗jsSpStyDSA
+    let input3 = document.querySelector('.input3');
+    input3.addEventListener('blur', function func() {
+      let num = +this.value;
+      if (num < 10) {
+        this.dataset.type = 'lowLim';
+      }
+      if (num > 10 && num < 20) {
+        this.dataset.type = 'midLim';
+      } 
+      if (num > 20) {
+        this.dataset.type = 'highLim';
+      }
+    });
+  </script>
+</body>
+
+</html>

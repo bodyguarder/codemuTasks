@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <input class="input1" type="text" value="input1">
+  <p class="text1">input1</p>
+
+  <!-- #2 -->
+  <input class="input2" type="text" value="1">
+  <input class="input2" type="text" value="2">
+  <input class="input2" type="text" value="3">
+  <p class="text2">text2</p>
+  <button class="btn2">btn2</button>
+
+  <!-- #3 -->
+  <input class="input3" type="text" value="555">
+
+  <!-- #4 -->
+  <input class="input4" type="text" value="1,2,3">
+
+  <!-- #5 -->
+  <input class="input5" type="text" value="John Smith Junior">
+  <input class="input5" type="text">
+  <input class="input5" type="text">
+  <input class="input5" type="text">
+
+  <!-- #6 -->
+  <input class="input6" type="text" value="john smith junior">
+
+  <!-- #7 -->
+  <input class="input7" type="text" value="Lorem ipsum dolor sit amet.">
+
+  <!-- #8 -->
+  <input class="input8" type="text" value="31.12.2016">
+
+  <!-- #9 -->
+  <input class="input9" type="text" value="madam">
+
+  <!-- #10 -->
+  <input class="input10" type="text" value="94813">
+
+  <script>
+    //#1
+    let input1 = document.querySelector('.input1');
+    let text1 = document.querySelector('.text1');
+    input1.addEventListener('blur', function func() {
+      text1.innerHTML += input1.value;
+    });
+
+    //#2
+    let input2 = document.querySelectorAll('.input2');
+    let text2 = document.querySelector('.text2');
+    let btn2 = document.querySelector('.btn2');
+
+    btn2.addEventListener('click', function func() {
+      let sum = 0;
+      for (let elem of input2) {
+        sum += Number(elem.value);
+      }
+      text2.innerHTML = sum;
+    });
+
+    //#3
+    let input3 = document.querySelector('.input3');
+    input3.addEventListener('blur', function func() {
+      let arr = input3.value.split('');
+      let sum = 0;
+      for (let num of arr) {
+        sum += Number(num);
+      }
+      console.log(sum);
+    });
+
+    //#4
+    let input4 = document.querySelector('.input4');
+    input4.addEventListener('blur', function func() {
+      let arr = input4.value.split(',');
+      let sum = 0;
+      for (let num of arr) {
+        sum += Number(num);
+      }
+      console.log(sum / arr.length);
+    });
+
+    //#5
+    let input5 = document.querySelectorAll('.input5');
+    input5[0].addEventListener('blur', function func() {
+      let userInfo = input5[0].value.split(' ');
+      let j = 0;
+      for (let i = 1; i < input5.length; i++) {
+        input5[i].value = userInfo[j];
+        j++;
+      }
+    });
+
+    //#6
+    let input6 = document.querySelector('.input6');
+    input6.addEventListener('blur', function func() {
+      let arr = this.value.split(' ');
+      for (let i = 0; i < arr.length; i++) {
+        let string = arr[i].split('');
+        string[0] = string[0].toUpperCase();
+        arr[i] = string.join('');
+      } 
+      this.value = arr.join(' ');
+    });
+
+    //#7
+    let input7 = document.querySelector('.input7');
+    input7.addEventListener('blur', function() {
+      let arr = input7.value.split(' ');
+      console.log(arr.length);
+    });
+
+    //#8
+    let input8 = document.querySelector('.input8');
+    input8.addEventListener('blur', function() {
+      let arr = input8.value.split('.');
+      let newArr = [];
+      for (let i = arr.length - 1; i >= 0; i--) {
+        newArr.push(arr[i]);
+      }
+      input8.value = newArr.join('-');
+    });
+
+    //#9
+    let input9 = document.querySelector('.input9');
+    input9.addEventListener('blur', function func() {
+      let arr = input9.value.split('');
+      let newArr = [];
+      for (let i = arr.length - 1; i >= 0; i--) {
+        newArr.push(arr[i]);
+      }
+      for (let i = arr.length - 1; i >= 0; i--) {
+        if (arr[i] != newArr[i]) {
+          return console.log(false);;
+        }
+      } 
+      
+      return console.log(true);;
+    });
+
+    //#10
+    let input10 = document.querySelector('.input10');
+    input10.addEventListener('blur', function func() {
+      let arr = input10.value.split('');
+      for (let elem of arr) {
+        if (Number(elem) === 3) {
+          return console.log(true);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

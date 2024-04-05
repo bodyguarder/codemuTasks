@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let users = [{
+        surn: 'surn1',
+        name: 'name1',
+        age: 31,
+      },
+      {
+        surn: 'surn2',
+        name: 'name2',
+        age: 32,
+      },
+      {
+        surn: 'surn',
+        name: 'name3',
+        age: 33,
+      },
+    ];
+
+    let jsonUsers = JSON.stringify(users);
+    localStorage.setItem('users', jsonUsers);
+    let body = document.querySelector('body');
+    for (let i = 0; i < 3; i++) {
+      let input = document.createElement('input');
+      body.appendChild(input);
+    }
+    let btn = document.createElement('button');
+    btn.textContent = 'addUser';
+    body.appendChild(btn);
+
+    let inputs = document.querySelectorAll('input');
+
+    btn.addEventListener('click', function func() {
+      let json = localStorage.getItem('users');
+      let arr = JSON.parse(json);
+      let obj = {};
+      obj['surn'] = inputs[0].value;
+      obj['name'] = inputs[1].value;
+      obj['age'] = inputs[2].value;
+      arr.push(obj);
+      let modJSON = JSON.stringify(arr);
+      localStorage.setItem('users', modJSON);
+    });
+  </script>
+</body>
+
+</html>

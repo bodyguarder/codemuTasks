@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <input id="input">
+    <ul id="list"></ul>
+  </div>
+
+  <style>
+    body {
+      text-align: center;
+    }
+
+    #input,
+    #list {
+      display: inline-block;
+    }
+
+    #list {
+      padding: 0;
+      list-style-type: none;
+    }
+
+    #list span {
+      margin-right: 5px;
+    }
+
+    #list .remove,
+    #list .mark {
+      color: blue;
+      cursor: pointer;
+    }
+
+    #list .remove:hover,
+    #list .mark:hover {
+      text-decoration: underline;
+    }
+
+    #list .done {
+      text-decoration: line-through;
+    }
+
+    #wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+
+  <script>
+    let input = document.querySelector('#input');
+    let list = document.querySelector('#list');
+    let keys = Object.keys(localStorage);
+    let values = Object.values(localStorage);
+
+    function writeToStorage(elem) {
+      let spans = elem.querySelectorAll('span');
+      let obj = {};
+      let i = 0;
+      let taskName = spans[0].textContent;
+      for (let span of spans) {
+        obj[i] = [];
+        let classNames = span.classList;
+        for (let className of classNames) {
+          obj[i].push(className);
+        }
+        i++;
+      }
+      let json = JSON.stringify(obj);
+      localStorage.setItem(taskName, json);
+    }
+
+    function createFromStorage(json, keys) {
+      for (let i = 0; i < json.length; i++) {
+        let li = document.createElement('li');
+        let obj = JSON.parse(json[i]);
+        console.log(obj);
+        for (let key in obj) {
+          let span = document.createElement('span');
+          for (let elem of obj[key]) {
+            span.classList.add(elem);
+          }
+          li.appendChild(span);
+        }
+        let spans = li.querySelectorAll('span');
+        spans[0].textContent = keys[i];
+        spans[0].addEventListener('dblclick', changeTask);
+        spans[1].textContent = 'удалить';
+        spans[1].addEventListener('click', removeTask);
+        spans[2].textContent = 'сделано';
+        spans[2].addEventListener('click', markTask);
+        console.log('!');
+        list.appendChild(li);
+      }
+    }
+
+    if (values.length != 0) {
+      createFromStorage(values, keys);
+    }
+
+    function changeTask() {
+      let input = document.createElement('input');
+      input.value = this.textContent;
+      let buf = this.textContent;
+      this.textContent = '';
+      this.appendChild(input);
+      let self = this;
+      input.addEventListener('blur', function func() {
+        self.textContent = this.value;
+        let value = localStorage.getItem(buf);
+        localStorage.removeItem(buf);
+        localStorage.setItem(this.value, value);
+        if (buf != self.textContent) {
+          self.classList.remove('done');
+        }
+      });
+    }
+
+    function removeTask() {
+      this.parentElement.remove();
+      let key = this.parentElement.firstElementChild.textContent;
+      localStorage.removeItem(key);
+    }
+
+    function markTask() {
+      this.parentElement.firstElementChild.classList.toggle('done');
+      writeToStorage(this.parentElement);
+    }
+
+    function createCheckList(self) {
+      let li = document.createElement('li');
+      let task = document.createElement('span');
+      task.classList.add('task');
+      task.textContent = self.value;
+
+      task.addEventListener('dblclick', changeTask);
+      li.appendChild(task);
+
+      let remove = document.createElement('span');
+      remove.classList.add('remove');
+      remove.textContent = 'удалить';
+      remove.addEventListener('click', removeTask);
+      li.appendChild(remove);
+
+      let mark = document.createElement('span');
+      mark.classList.add('mark');
+      mark.textContent = 'сделано';
+      mark.addEventListener('click', markTask);
+      li.appendChild(mark);
+
+      list.appendChild(li);
+      writeToStorage(li);
+
+      self.value = '';
+    }
+
+    input.addEventListener('keypress', function (event) {
+      if (event.key == 'Enter') {
+        let self = this;
+        createCheckList(self);
+      }
+    });
+  </script>
+</body>
+
+</html>

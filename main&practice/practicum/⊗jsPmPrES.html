@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <p>text1</p>
+  <p>text2</p>
+  <p>text3</p>
+
+  <!-- #2 -->
+  <div>text1</div>
+  <div>text2</div>
+  <div>text3</div>
+
+  <!-- #3 -->
+  <table class="table">
+    <tr>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+  </table>
+
+  <style>
+    .text-conf {
+      text-decoration: line-through;
+    }
+
+    .row-color {
+      background-color: green;
+    }
+
+    td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+    }
+  </style>
+
+  <script>
+    //#1
+    let texts = document.querySelectorAll('p');
+
+    for (let text of texts) {
+      let span = document.createElement('span');
+      span.textContent = text.textContent;
+      text.textContent = '';
+      span.addEventListener('click', function func1() {
+        this.classList.add('text-conf');
+      });
+      text.appendChild(span);
+
+      let link = document.createElement('a');
+      link.href = '';
+      link.textContent = 'delete element';
+      link.addEventListener('click', function func2(event) {
+        text.remove();
+        event.preventDefault();
+      });
+      text.appendChild(link);
+    }
+
+    //#2
+    let texts2 = document.querySelectorAll('div');
+
+    for (let text of texts2) {
+      let span = document.createElement('span');
+      span.textContent = text.textContent;
+      text.textContent = '';
+      text.appendChild(span);
+
+      let link = document.createElement('a');
+      link.href = '';
+      link.textContent = 'delete element';
+      link.addEventListener('click', function func2(event) {
+        span.classList.add('text-conf');
+        this.remove();
+        event.preventDefault();
+      });
+      text.appendChild(link);
+    }
+
+    //#3 #4
+    let table = document.querySelector('.table');
+    let trs = table.querySelectorAll('tr');
+    for (let tr of trs) {
+      let td = document.createElement('td');
+      let link = document.createElement('a');
+      link.href = '';
+      link.textContent = 'color';
+      link.addEventListener('click', function func(event) {
+        tr.classList.toggle('row-color');
+        event.preventDefault();
+      });
+      td.appendChild(link);
+      tr.appendChild(td);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box">
+    <a class="link-back" href="">назад</a>
+    <a class="link-forward" href="">вперед</a>
+  </div>
+
+  <style>
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    li {
+      width: 40px;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+
+  <script>
+    let body = document.querySelector('body');
+    let box = document.querySelector('.box');
+    let list;
+    let span;
+    let month = 1;
+    let lastDay;
+    let curDay = new Date();
+    let nums = [];
+
+    let months = [
+      'янв', 'фев', 'мар', 'апр', 'май', 'июн',
+      'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'
+    ];
+
+    function createCalendar(arr) {
+      let curMonth = curDay.getMonth();
+      lastDay = new Date(2024, month + 1, 0);
+      list = document.createElement('ul');
+      body.appendChild(list);
+      for (let i = 0; i < lastDay.getDate(); i++) {
+        arr.push(i + 1);
+        let li = document.createElement('li');
+        li.textContent = arr[i];
+        list.appendChild(li);
+
+        if (month == curMonth && li.textContent == curDay.getDate()) {
+          li.style.color = 'red';
+        }
+      }
+
+      span = document.createElement('span');
+      box.insertAdjacentElement('afterEnd', span);
+      span.textContent = months[month] + ' ' + curDay.getFullYear();
+      console.log(arr);
+    }
+
+    createCalendar(nums);
+
+    let linkForward = document.querySelector('.link-forward');
+    linkForward.addEventListener('click', (event) => switchForward());
+
+    let linkBack = document.querySelector('.link-back');
+    linkBack.addEventListener('click', (event) => switchBack());
+
+    function switchForward() {
+      if (month < 11) {
+        month++;
+        console.log(month);
+        nums = [];
+        span.textContent = '';
+        list.remove();
+        createCalendar(nums);
+        console.log(lastDay);
+      }
+      event.preventDefault();
+    }
+
+    function switchBack() {
+      if (month > 0) {
+        month--;
+        console.log(month);
+        nums = [];
+        span.textContent = '';
+        list.remove();
+        createCalendar(nums);
+        console.log(lastDay);
+      }
+      event.preventDefault();
+    }
+  </script>
+</body>
+
+</html>

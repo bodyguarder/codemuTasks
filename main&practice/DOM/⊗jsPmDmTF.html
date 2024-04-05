@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <input class="input1" type="text" value="input1">
+  <button class="btn1">btn1</button>
+
+  <!-- #2 -->
+  <input class="input2" type="text" value="input2">
+  <p class="text2">Lorem ipsum dolor sit.</p>
+  <button class="btn2">btn2</button>
+
+  <!-- #3 -->
+  <input class="input3_1" type="text" value="input3_1 number">
+  <input class="input3_2" type="text" value="input3_2 sqrt">
+  <button class="btn3">btn3</button>
+
+  <!-- #4 -->
+  <input class="input4_1" type="text" value="input4_1">
+  <input class="input4_2" type="text" value="input4_2">
+  <button class="btn4">btn4</button>
+
+  <!-- #5 -->
+  <input class="input5_1" type="text" value="1">
+  <input class="input5_2" type="text" value="2">
+  <input class="input5_3" type="text" value="3">
+  <input class="input5_4" type="text" value="4">
+  <input class="input5_5" type="text" value="5">
+  <p class="text5">Lorem ipsum dolor sit.</p>
+  <button class="btn5">btn5</button>
+
+  <script>
+    //#1
+    let input1 = document.querySelector('.input1');
+    let btn1 = document.querySelector('.btn1');
+
+    btn1.addEventListener('click', function func() {
+      input1.value = 'code.mu';
+    });
+
+    //#2
+    let input2 = document.querySelector('.input2');
+    let btn2 = document.querySelector('.btn2');
+    let text2 = document.querySelector('.text2');
+
+    btn2.addEventListener('click', function func() {
+      text2.innerHTML = input2.value;
+    });
+
+    //#3
+    let input3_1 = document.querySelector('.input3_1');
+    let input3_2 = document.querySelector('.input3_2');
+    let btn3 = document.querySelector('.btn3');
+
+    btn3.addEventListener('click', function func() {
+      input3_2.value = Math.sqrt(Number(input3_1.value));
+    });
+
+    //#4
+    let input4_1 = document.querySelector('.input4_1');
+    let input4_2 = document.querySelector('.input4_2');
+    let btn4 = document.querySelector('.btn4');
+
+    btn4.addEventListener('click', function func() {
+      let buffer = input4_1.value;
+      input4_1.value = input4_2.value;
+      input4_2.value = buffer;
+    });
+
+    //#5
+    let input5_1 = document.querySelector('.input5_1');
+    let input5_2 = document.querySelector('.input5_2');
+    let input5_3 = document.querySelector('.input5_3');
+    let input5_4 = document.querySelector('.input5_4');
+    let input5_5 = document.querySelector('.input5_5');
+    let text5 = document.querySelector('.text5');
+
+    let btn5 = document.addEventListener('click', function func() {
+      let avgSum = (Number(input5_1.value) + Number(input5_2.value) + Number(input5_3.value) + Number(input5_4.value) +
+      Number(input5_5.value)) / 5;
+      text5.innerHTML = avgSum;
+    });
+  </script>
+</body>
+
+</html>

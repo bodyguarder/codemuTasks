@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="elem">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, repellendus nisi temporibus necessitatibus quas
+    explicabo culpa autem fugiat? Atque laborum dolorem eius sit explicabo iusto unde molestiae mollitia ratione
+    repellendus.
+    Mollitia doloribus architecto numquam, saepe omnis incidunt necessitatibus, corporis facilis maxime, possimus
+    maiores ad sint blanditiis vel vero debitis hic quis minima temporibus nam itaque quibusdam? Nemo voluptatem illo
+    quod? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, optio voluptatem exercitationem magni labore
+    dolorum similique explicabo doloribus assumenda
+    auctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoauctoaucto.
+  </div>
+
+  <button class="btn1">scrollElem</button>
+  <button class="btn2">scroll</button>
+  <button class="btn3">scrollUp</button>
+  <button class="btn4">scrollDown</button>
+  <button class="btn5">openHeight</button>
+
+  <style>
+    #elem {
+      width: 300px;
+      height: 150px;
+      margin: 50px auto;
+      padding: 25px;
+      background: #CFF5BF;
+      border: 25px solid #F0D7A1;
+      overflow: auto;
+      text-align: justify;
+    }
+  </style>
+
+  <script>
+    let elem = document.querySelector('#elem');
+    let btn1 = document.querySelector('.btn1');
+    let btn2 = document.querySelector('.btn2');
+    let btn3 = document.querySelector('.btn3');
+    let btn4 = document.querySelector('.btn4');
+    let btn5 = document.querySelector('.btn5');
+    btn1.addEventListener('click', function () {
+      elem.scrollTop = 100;
+      elem.scrollLeft = 50;
+    });
+
+    btn2.addEventListener('click', function () {
+      elem.scrollTop += 50;
+    });
+
+    btn3.addEventListener('click', function () {
+      elem.scrollTop = 0;
+    });
+
+    btn4.addEventListener('click', function () {
+      elem.scrollTop = elem.scrollHeight - elem.clientHeight;
+    });
+
+    btn5.addEventListener('click', function () {
+      elem.style.height = elem.scrollHeight + 'px';
+    });
+  </script>
+</body>
+
+</html>

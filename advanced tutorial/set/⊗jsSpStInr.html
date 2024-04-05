@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let set = new Set;
+    set.add(1);
+    set.add(2);
+    set.add(2);
+    set.add(3);
+    console.log(set);
+
+    //⊗jsSpStIF #1
+    let arr = [1, 2, 3, 1, 3, 4];
+    let set1 = new Set(arr);
+    console.log(set1);
+
+    let set2 = new Set([1, 2, 3]);
+    set2.add(2);
+    console.log(set2);
+
+    for (let elem of set1) {
+      console.log(elem);
+    }
+
+    //⊗jsSpStStCn
+    let arr1 = [...set1];
+    console.log(arr1);
+    let arr2 = Array.from(set);
+    console.log(arr2);
+
+    //⊗jsSpStARD
+    let arr4 = [1, 2, 3, 1, 3, 4];
+
+    function delDouble(arr) {
+      arr = [...new Set(arr)];
+      return arr;
+    }
+    arr4 = delDouble(arr4);
+    console.log(arr4);
+  </script>
+</body>
+</html>

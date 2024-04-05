@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <div id="elem1" class="content no-gap"></div>
+  <button class="btn1">btn1</button>
+
+  <!-- #2 -->
+  <div id="elem2"></div>
+  <button class="btn2">btn2</button>
+
+  <!-- #3 -->
+  <div id="elem3" class="aaa bbb ccc"></div>
+  <button class="btn3">btn3</button>
+
+  <script>
+    //#1
+    let elem1 = document.querySelector('#elem1');
+    let btn1 = document.querySelector('.btn1');
+    btn1.addEventListener('click', function func() {
+      alert(elem1.className);
+    });
+
+    //#2
+    let elem2 = document.querySelector('#elem2');
+    let btn2 = document.querySelector('.btn2');
+    btn2.addEventListener('click', function func() {
+      elem2.className = 'div2';
+      alert(elem2.className);
+    });
+
+    //#3
+    let elem3 = document.querySelector('#elem3');
+    let btn3 = document.querySelector('.btn3');
+    btn3.addEventListener('click', function func() {
+      let arr = elem3.className.split(' ');
+      console.log(arr);
+    });
+  </script>
+</body>
+</html>

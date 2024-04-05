@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <ul>
+    <li>text</li>
+    <li>text</li>
+    <li id="elem1">text</li>
+    <li>text</li>
+    <li>text</li>
+  </ul>
+
+  <!-- #4 -->
+  <ul>
+    <li>text1</li>
+    <li>text2</li>
+    <li id="elem4">text3</li>
+    <li>text4</li>
+    <li>text5</li>
+  </ul>
+
+  <script>
+    //#1
+    let elem1 = document.querySelector('#elem1');
+    let prevElem = elem1.previousElementSibling;
+    prevElem.innerHTML += '!';
+
+    //#2
+    let nextElem = elem1.nextElementSibling;
+    nextElem.innerHTML += '!';
+
+    //#3
+    let nextElem3 = elem1.nextElementSibling;
+    nextElem3.nextElementSibling.innerHTML += '!';
+
+    //#4
+    let elem4 = document.querySelector('#elem4');
+    let nextElem4 = elem4.nextElementSibling;
+    let prevElem4 = elem4.previousElementSibling;
+    console.log(prevElem4);
+    [prevElem4.innerHTML, nextElem4.innerHTML] = [nextElem4.innerHTML, prevElem4.innerHTML];
+  </script>
+</body>
+</html>

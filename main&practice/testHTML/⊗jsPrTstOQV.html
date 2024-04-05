@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <button id="button">проверить ответы</button>
+
+  <style>
+    .right {
+      border: 1px solid green;
+    }
+
+    .wrong {
+      border: 1px solid red;
+    }
+  </style>
+
+  <script>
+    let questions = [{
+        text: 'вопрос 1?',
+        right: 0,
+        variants: [
+          'вариант 1',
+          'вариант 2',
+          'вариант 3'
+        ]
+      },
+      {
+        text: 'вопрос 2?',
+        right: 1,
+        variants: [
+          'вариант 1',
+          'вариант 2',
+          'вариант 3'
+        ]
+      },
+      {
+        text: 'вопрос 3?',
+        right: 2,
+        variants: [
+          'вариант 1',
+          'вариант 2',
+          'вариант 3'
+        ]
+      },
+    ];
+
+    let test = document.querySelector('#test');
+    let btn = document.querySelector('#button');
+
+    function createTest(arr) {
+      let count = 1;
+      for (let elem of arr) {
+        let div = document.createElement('div');
+        let question = document.createElement('p');
+        question.textContent = elem['text'];
+        div.appendChild(question);
+        test.appendChild(div);
+
+        for (let answer of elem['variants']) {
+          let label = document.createElement('label');
+          let input = document.createElement('input');
+          input.type = 'radio';
+          input.name = count;
+          label.appendChild(input);
+          label.innerHTML += answer;
+          div.appendChild(label);
+        }
+        count++;
+      }
+    }
+
+    createTest(questions);
+
+    let inputs = [
+      document.querySelectorAll('input[name="1"]'),
+      document.querySelectorAll('input[name="2"]'),
+      document.querySelectorAll('input[name="3"]')
+    ];
+
+    btn.addEventListener('click', function func() {
+      for (let i = 0; i < inputs.length; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (inputs[i][j].checked) {
+            if (j == questions[i]['right']) {
+              inputs[i][j].parentElement.classList.add('right');
+            } else {
+              inputs[i][j].parentElement.classList.add('wrong');
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

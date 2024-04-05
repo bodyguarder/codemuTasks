@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <select name="weekDays" id="#select" class="select">
+    <option value="1" selected>пн</option>
+    <option value="2">вт</option>
+    <option value="3">ср</option>
+    <option value="4">чт</option>
+    <option value="5">пт</option>
+    <option value="6">сб</option>
+    <option value="7">вс</option>
+  </select>
+
+  <script>
+    let select = document.querySelector('.select');
+    select.addEventListener('change', function func() {
+      if (select.value == '6' || select.value == '7') {
+        alert('выходной день');
+      } else {
+        alert('рабочий день');
+      }
+    });
+  </script>
+</body>
+
+</html>

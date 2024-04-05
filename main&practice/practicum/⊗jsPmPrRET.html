@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #1 -->
+  <div id="parent">
+    <p><span>text1</span></p>
+    <p><span>text2</span></p>
+    <p><span>text3</span></p>
+  </div>
+
+  <script>
+    //#1
+    let parent = document.querySelector('#parent');
+    let texts = parent.querySelectorAll('p');
+    let spans = parent.querySelectorAll('span');
+    
+    for (let text of texts) {
+      let link = document.createElement('a');
+      link.textContent = 'delete text';
+      link.href = '';
+      link.addEventListener('click', function func1(event) {
+        text.remove();
+        event.preventDefault();
+      })
+      text.appendChild(link);
+    }
+
+    for (let span of spans) {
+      span.addEventListener('click', function func2() {
+        let input = document.createElement('input');
+        input.value = span.textContent;
+        span.textContent = '';
+        span.appendChild(input);
+
+        input.addEventListener('blur', function func3() {
+          span.textContent = this.value;
+          span.addEventListener('click', func2);
+        });
+
+        this.removeEventListener('click', func2);
+      });
+    }
+    
+  </script>
+</body>
+
+</html>

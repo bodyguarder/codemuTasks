@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <script>
+    let arr = [1, 2, 3, 4, 5];
+    let iter = arr.values();
+    for (let elem of iter) {
+      console.log(elem);
+    }
+
+    let set = new Set(arr);
+    let iter1 = set.values();
+    for (let elem of iter1) {
+      console.log(elem);
+    }
+
+    //⊗jsSpItIIK
+    let map = new Map();
+    map.set('a', 1);
+    map.set('b', 2);
+    map.set('c', 3);
+    let iter2 = map.keys();
+    for (let elem of iter2) {
+      console.log(elem);
+    }
+
+    let iter3 = set.keys();
+    for (let elem of iter3) {
+      console.log(elem);
+    }
+
+    //⊗jsSpItIIE
+    let iter4 = map.entries();
+    for (let entry of iter4) {
+      console.log(entry);
+    }
+
+    let iter5 = set.entries();
+    for (let entry of iter5) {
+      console.log(entry);
+    }
+    
+    let iter6 = document.querySelectorAll('p').entries();
+    for (let entry of iter6) {
+      console.log(entry);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="form">
+      <input id="name" placeholder="название">
+      <input id="price" placeholder="цена">
+      <input id="amount" placeholder="количество">
+      <input id="add" type="button" value="добавить">
+    </div>
+
+    <h2>Таблица продуктов:</h2>
+    <table id="table">
+      <tr>
+        <th>название</th>
+        <th>цена</th>
+        <th>кол-во</th>
+        <th>сумма</th>
+        <th>удалить</th>
+      </tr>
+    </table>
+    <div id="result">
+      общий итог: <span id="total">
+        0</span>
+    </div>
+  </div>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #parent {
+      margin: 0 auto;
+      width: 500px;
+    }
+
+    #form {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    #form input {
+      padding: 8px;
+      width: 24%;
+      margin: 0 0.5% 10px 0.5%;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 7px;
+    }
+
+    #table {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    #table td,
+    #table th {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid black;
+    }
+
+    #table td.remove {
+      color: blue;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    #table td.remove:hover {
+      text-decoration: none;
+    }
+
+    #result {
+      text-align: right;
+      margin-right: 10px;
+    }
+  </style>
+
+  <script>
+    let name = document.querySelector('#name');
+    let price = document.querySelector('#price');
+    let amount = document.querySelector('#amount');
+    let add = document.querySelector('#add');
+    let table = document.querySelector('#table');
+    let total = document.querySelector('#total');
+
+    function createCell(tr, value, className) {
+      let td = document.createElement('td');
+      td.textContent = value;
+      td.classList.add(className);
+      tr.appendChild(td);
+      return td;
+    }
+
+    function recountTotal() {
+      let costs = table.querySelectorAll('.cost');
+
+      if (costs) {
+        let sum = 0;
+        for (let cost of costs) {
+          sum += +cost.textContent;
+        }
+        total.textContent = sum;
+      }
+    }
+
+    function allowEdit(td) {
+      td.addEventListener('dblclick', function func() {
+        let self = this;
+        let input = document.createElement('input');
+        input.value = td.textContent;
+        this.textContent = '';
+        this.appendChild(input);
+        input.focus();
+
+        input.addEventListener('keypress', function func(event) {
+          if (event.key == 'Enter') {
+            self.textContent = input.value;
+
+            if (self.classList.contains('price') || self.classList.contains('amount')) {
+              let parentTr = self.parentElement;
+              let value = parentTr.querySelector('.price');
+              let quantity = parentTr.querySelector('.amount');
+              let cost = parentTr.querySelector('.cost');
+              cost.textContent = value.textContent * quantity.textContent;
+              recountTotal();
+            }
+          }
+        });
+      });
+    }
+
+    add.addEventListener('click', function func() {
+      let tr = document.createElement('tr');
+      allowEdit(createCell(tr, name.value, 'name'));
+      allowEdit(createCell(tr, price.value, 'price'));
+      allowEdit(createCell(tr, amount.value, 'amount'));
+      createCell(tr, price.value * amount.value,
+        'cost');
+      let remove = createCell(tr, 'удалить', 'remove');
+      remove.addEventListener('click', function func() {
+        this.parentElement.remove();
+        recountTotal();
+      });
+
+      table.appendChild(tr);
+      recountTotal();
+    });
+  </script>
+</body>
+
+</html>

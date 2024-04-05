@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <span class="steps"></span>
+  <table id="field"></table>
+
+  <style>
+    #field td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .blue {
+      background: blue;
+    }
+  </style>
+
+  <script>
+    let steps = document.querySelector('.steps');
+    let count = 0;
+    let field = document.querySelector('#field');
+    let rows = 3;
+    let cols = 3;
+    let colors = ['red', 'green',
+      'blue'
+    ];
+
+    function createTable(rows, cols) {
+      for (let i = 0; i < rows; i++) {
+        let tr = document.createElement('tr');
+        for (let j = 0; j < cols; j++) {
+          let td = document.createElement('td');
+          td.classList.add(getColor(colors));
+
+          td.addEventListener('click', function func() {
+            count++;
+            steps.textContent = 'Всего шагов: ' + count;
+            let self = this;
+            let curColor = this.getAttribute('class');
+            this.classList.remove(curColor);
+            this.classList.add(setColor(colors, curColor));
+            if (isVictory(self)) {
+              alert('победа!');
+            }
+          });
+
+          tr.appendChild(td);
+        }
+        field.appendChild(tr);
+      }
+    }
+
+    function getColor(arr) {
+      let index = Math.floor(Math.random()*(arr.length));
+      return arr[index];
+    }
+
+    function setColor(arr, curColor) {
+      let curIndex = arr.indexOf(curColor);
+      if (curIndex == arr.length - 1) {
+        return arr[0];
+      } else {
+        return arr[curIndex + 1];
+      }
+    }
+
+    function isVictory(self) {
+      let tds = field.querySelectorAll('td');
+      let curTdColor = self.getAttribute('class');
+      for (let td of tds) {
+        let tdColor = td.getAttribute('class');
+        if (curTdColor != tdColor) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    createTable(rows, cols);
+  </script>
+</body>
+
+</html>

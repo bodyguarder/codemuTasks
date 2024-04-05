@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- #1 -->
+  <p class="text1">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, minima.
+  </p>
+
+  <button class="btn1">Button</button>
+
+  <script>
+    let button1 = document.querySelector('.btn1');
+    let text1 = document.querySelector('.text1');
+    button1.addEventListener('click', function func() {
+      console.log(text1.innerHTML);
+    });
+  </script>
+
+  <!-- #2 -->
+  <p class="text2">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, minima.
+  </p>
+
+  <button class="btn2">Button</button>
+
+  <script>
+    let button2 = document.querySelector('.btn2');
+    let text2 = document.querySelector('.text2');
+    button2.addEventListener('click', function func() {
+      text2.innerHTML = '<b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, minima.</b>'
+    });
+  </script>
+</body>
+</html>
