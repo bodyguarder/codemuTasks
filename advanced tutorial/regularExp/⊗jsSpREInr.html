@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //#1
+    let str = 'ahb acb aeb aeeb adcb axeb';
+    console.log(str.replace(/a.b/g));
+
+    //#2
+    let str2 = 'aba aca aea abba adca abea';
+    console.log(str2.replace(/a..a/g));
+
+    //#3
+    let str3 = 'aba aca aea abba adca abea';
+    console.log(str3.replace(/ab.a/g));
+
+    //⊗jsSpRERO
+    let str4 = 'aa aba abba abbba abca abea';
+    console.log(str4.replace(/ab+a/g));
+    console.log(str4.replace(/ab*a/g));
+    console.log(str4.replace(/ab?a/g));
+
+    //⊗jsSpRERO
+    let str5 = 'ab abab abab abababab abea';
+    console.log(str5.replace(/(ab)+/g));
+
+    //⊗jsSpREESCh
+    //#1
+    let str6 = 'a.a aba aea';
+    console.log(str6.replace(/a\.a/g));
+    //#3
+    let str7 = '23 2+3 2++3 2+++3 345 567';
+    console.log(str7.replace(/2\++3/g));
+    //#5
+    let str8 = '*+ *q+ *qq+ *qqq+ *qqq qqq+';
+    console.log(str8.replace(/\*q+\+/g));
+    //#6
+    let str9 = '[abc] {abc} abc (abc) [abc]';
+    console.log(str9.replace(/\[abc]/g, '!'));
+  </script>
+</body>
+
+</html>

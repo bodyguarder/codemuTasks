@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //#1
+    let str = 'abc def xyz';
+    console.log(str.replace(/\b/g, '#'));
+
+    //#2
+    console.log(str.replace(/\B/g, '#'));
+
+    //⊗jsSpREMl
+    //#1
+    let str1 = `
+    abc
+    def
+    ghi
+    jkl
+    `;
+    
+    console.log(str1.replace(/$/gm, '!'));
+    console.log(str1.replace(/^/gm, '!'));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="product" data-product="яблоко" data-price="1000"></div>
+  <script>
+    try {
+      let str1 = '';
+      for (let i = 1; i <= 6 * 10 ** 6; i++) {
+        str1 += '+';
+      }
+      localStorage.setItem('key', str1);
+    } catch (error) {
+      console.log(error.name);
+      console.log(error.message);
+    }
+
+    //⊗jsSpExcNC
+    function getArr(json) {
+      return JSON.parse(json);
+    }
+
+    try {
+      let arr = getArr('{1,2,3,4,5}');
+      console.log(arr);
+    } catch (error) {
+      console.log(error.name);
+      console.log(error.message);
+      console.log('некорректный JSON');
+    }
+
+    //⊗jsSpExcAT
+    function saveData(json) {
+      let arr = JSON.parse(json);
+
+      for (let i = 0; i < arr.length; i++) {
+        localStorage.setItem(i, arr[i]);
+      }
+    }
+
+    try {
+      saveData('{1,2,3,4,5}');
+    } catch (error) {
+      if (error.name == 'QuotaExceededError') {
+        console.log('закончилось место в хранилище');
+      }
+
+      if (error.name == 'SyntaxError') {
+        console.log('некорректный JSON');
+      }
+    }
+
+    //⊗jsSpExcThr
+    function getSqrt(num) {
+      if (num >= 0) {
+        return Math.sqrt(num);
+      } else {
+        throw new Error('ошибка извлечения корня из отрицательного числа');
+      }
+    }
+
+    try {
+      console.log(getSqrt(-1));
+    } catch (error) {
+      console.log('вы пытаетесь извлечь корень из отрицательного числа!');
+    }
+
+    //⊗jsSpExcThrT
+    try {
+      throw new TypeError('ошибка типа');
+    } catch (error) {
+      console.log(error.name);
+      console.log(error.message);
+    }
+
+    //⊗jsSpExcDAE
+    let product = document.querySelector('#product');
+
+    function getCost(elem) {
+      if (elem.dataset.price == undefined) {
+        throw {
+          name: 'productPriceError',
+          message: 'данные о цене продукта отсутствуют'
+        };
+      }
+      if (elem.dataset.amount == undefined) {
+        throw {
+          name: 'productAmountError',
+          message: 'данные о количестве продукта отсутствуют'
+        };
+      }
+      if (elem.dataset.amount !== undefined && elem.dataset.price !== undefined) {
+        return elem.dataset.price * elem.dataset.amount;
+      }
+    }
+
+    try {
+      let cost = getCost(product);
+      alert(cost);
+    } catch (error) {
+      if (error.name == 'productAmountError') {
+        console.log(error.message);
+      }
+      if (error.name == 'productPriceError') {
+        console.log(error.message);
+      } 
+    }
+
+    //⊗jsSpExcJSE
+    let json = `[
+    {
+    "name": "user1",
+    "age": 25,
+    "salary": 1000
+    },
+    {
+    "name": "user2",
+    "age": 26,
+    "salary": 2000
+    },
+    {
+    "name": "user3",
+    "age": 27,
+    "salary": 3000
+    }
+    ]`;
+
+    try {
+      let data = JSON.parse(json);
+      if (!Array.isArray(data)) {
+        throw {
+          name: 'checkTypeError',
+          message: 'это не массив'
+        };
+      }
+    } catch (error) {
+      console.log(error.name);
+      console.log(error.message);
+    }
+  </script>
+</body>
+
+</html>

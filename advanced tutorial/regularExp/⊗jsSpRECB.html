@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //#1
+    let str = 'aa aba abba abbba abbbba abbbbba';
+    console.log(str.replace(/ab{2,5}a/g));
+    //#2
+    console.log(str.replace(/ab{0,3}a/g));
+    //#3
+    console.log(str.replace(/ab{4,}a/g));
+
+    //⊗jsSpREGL
+    let str2 = 'aba accca azzza wwwwa';
+    console.log(str2.replace(/a.+?a/g, '!'));
+
+    //⊗jsSpREChG
+    //#1
+    let str3 = 'a1a a2a a3a a4a a5a aba aca';
+    console.log(str3.replace(/a\da/g));
+    //#2
+    let str4 = 'a1a a22a a333a a4444a a55555a aba aca';
+    console.log(str4.replace(/a\d+a/g));
+    //#3
+    let str5 = 'aa a1a a22a a333a a4444a a55555a aba aca';
+    console.log(str5.replace(/a\d{0,}a/g));
+    //#4
+    let str6 = 'avb a1b a2b a3b a4b a5b abb acb';
+    console.log(str6.replace(/a\Db/g));
+    //#5
+    let str7 = 'ave a#b a2b a$b a4b a5b a-b acb';
+    console.log(str7.replace(/a\Wb/g));
+    //#6
+    let str8 = 'ave a#a a2a a$a a4a a5a a-a aca';
+    console.log(str8.replace(/\s+/g, '!'));
+
+    //⊗jsSpREChS
+    //#1
+    let str9 = 'aba aea aca aza axa';
+    console.log(str9.replace(/a[bex]a/g));
+    //#2
+    let str10 = 'a1a a3a a7a a9a aba';
+    console.log(str10.replace(/a[3-6]a/g));
+    //#4
+    let str11 = 'aba aea afa aha aga';
+    console.log(str11.replace(/a[a-fj-z]a/g));
+    //#6
+    let str12 = 'aAXa aeffa aGha aza ax23a a3sSa';
+    console.log(str12.replace(/a[a-z]+a/g));
+    //#7
+    console.log(str12.replace(/a[a-zA-Z]+a/g));
+    //#8
+    console.log(str12.replace(/a[a-z0-9]+a/g));
+  </script>
+</body>
+</html>

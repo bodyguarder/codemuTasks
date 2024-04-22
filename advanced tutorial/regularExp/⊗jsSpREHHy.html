@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //#1
+    let str = 'xaz xBz xcz x-z x@z';
+    console.log(str.replace(/x[a-zA-Z-]z/g));
+    console.log(str.replace(/x[a-z-]z/ig));
+
+    //#2
+    let str2 = 'xaz x$z x-z xcz x+z x%z x*z';
+    console.log(str2.replace(/x[$+-]z/g));
+  </script>
+</body>
+</html>

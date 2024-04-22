@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //#1
+    let str9 = 'aba aea aca aza axa';
+    console.log(str9.replace(/a[bex]a/g));
+    //#2
+    let str10 = 'a1a a3a a7a a9a aba';
+    console.log(str10.replace(/a[3-6]a/g));
+    //#4
+    let str11 = 'aba aea afa aha aga';
+    console.log(str11.replace(/a[a-fj-z]a/g));
+    //#6
+    let str12 = 'aAXa aeffa aGha aza ax23a a3sSa';
+    console.log(str12.replace(/a[a-z]+a/g));
+    //#7
+    console.log(str12.replace(/a[a-zA-Z]+a/g));
+    //#8
+    console.log(str12.replace(/a[a-z0-9]+a/g));
+  </script>
+</body>
+</html>

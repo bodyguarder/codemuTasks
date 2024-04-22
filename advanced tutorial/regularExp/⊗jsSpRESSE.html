@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //#1
+    let str = 'x[]z x[[]]z x()z x[][][][]z';
+    console.log(str.replace(/x(\[\])+z/g));
+
+    //#2
+    let str2 = 'x[]z x{}z x.z x()z x([])z x()()()()z';
+    console.log(str2.replace(/x(\(\))+z/g));
+  </script>
+</body>
+</html>

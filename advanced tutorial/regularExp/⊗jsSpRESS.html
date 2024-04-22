@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let str = 'aba aea aca aza axa a.a a+a a*a';
+    console.log(str.replace(/a[.+*]a/g));
+
+    let str1 = 'xaz x.z x3z x@z x$z xrz @sd @@@@';
+    console.log(str1.replace(/x[^.@$]z/g));
+
+    //⊗jsSpRESG
+    //#1
+    console.log(str1.replace(/[\d.]{1,}/g));
+    //#2
+    console.log((str1.replace(/[\W]{3,7}/g, '!')));
+  </script>
+</body>
+
+</html>

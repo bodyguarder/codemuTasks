@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="btn">load picture</button>
+
+  <script>
+    let btn = document.querySelector('.btn');
+    btn.addEventListener('click', function func() {
+      let image = document.createElement('img');
+      image.src = 'imag.png';
+      image.addEventListener('load', function func() {
+        document.body.appendChild(image);
+      });
+      image.addEventListener('error', function func() {
+        console.log('ошибка отображения картинки, проверьте путь');
+      });
+    });
+
+    //⊗jsSpACPA
+    function make(num1, num2, callback) {
+      setTimeout(function () {
+        let arr = [1, 2, 3, 4, 5];
+        callback(arr[num1], arr[num2]);
+      }, 3000);
+    }
+
+    make(0, 4, function func(elem1, elem2) {
+      return console.log(elem1 + elem2);
+    });
+
+    //⊗jsSpACIL
+    function loadImage(src, callback) {
+      console.log(1);
+      let image = document.createElement('img');
+      image.src = src;
+      let err;
+      if (src != undefined) {
+        err = 'incorrect path to picture';
+        console.log(err);
+      } else {
+        err = null;
+      }
+      callback(image, err)
+    }
+
+    loadImage('imag.png', function (image, err) {
+      console.log(2);
+      image.addEventListener('load', function () {
+        document.body.appendChild(image);
+      });
+    });
+  </script>
+</body>
+
+</html>

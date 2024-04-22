@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //#1
+    let str = 'aaa [2] bbb [3] ccc [12] ddd';
+    let res = str.replace(/\[(\d+)\]/g, function (match, num) {
+      console.log(match, num);
+      return '[' + num ** 2 + ']';
+    });
+    console.log(res);
+
+    //#2
+    let str2 = '123 456 789';
+    let res2 = str2.replace(/(\d)(\d)(\d)/g, function (match, num1, num2, num3) {
+      return num3 + num2 + num1;
+    });
+    console.log(res2);
+
+    //⊗jsSpRERDP
+    //#1
+    let str3 = 'a1b2c3';
+    let res3 = str3.replace(/\d/g, '$&$&');
+    console.log(res3);
+
+    //#2
+    let str4 = 'sss site.ru zzz site.com kkk';
+    let res4 = str4.replace(/[a-z]+\.[a-z]+/g, 'http://$&');
+    console.log(res4);
+
+    //⊗jsSpREEP
+    //#1
+    let str5 = 'aaa bbb ccc xyz';
+    let res5 = str5.replace(/([a-z])\1\1/g);
+    console.log(res5);
+
+    //#2
+    let str6 = 'a aa aaa aaaa aaaaa';
+    let res6 = str6.replace(/([a-z])\1+/g);
+    console.log(res6);
+
+    //#3
+    let str7 = 'aaa aaa bbb bbb ccc ddd';
+    let res7 = str7.replace(/([a-z]+) \1/g);
+    console.log(res7);
+
+    //⊗jsSpRENP
+    let str8 = '12:59:59';
+    let reg8 = /(?<hour>\d{2}):(?<second>\d{2}):(?<milisec>\d{2})/;
+    let res8 = str8.match(reg8);
+    console.log(res8.groups);
+    console.log(res8);
+
+    //⊗jsSpREENP
+    let str9 = '12:59:59 12:59:12 09:45:09';
+    let res9 = str9.replace(/(?<hour>\d{2}):\d{2}:\k<hour>/g);
+      console.log(res9);
+
+    //⊗jsSpRELAB
+    //#1
+    let str10 = 'func1() func2() func3()';
+    let res10 = str10.match(/[a-z]+\d+(?=\(\))/g);
+    console.log(res10);
+
+    //#2
+    let str11 = '<a href="" class="eee" id="zzz">';
+    let reg11 = /[a-z]+(?==)/g;
+    let res11 = str11.match(reg11);
+    console.log(res11);
+
+    //#3
+    let str12 = '$aaa $bbb $ccc xxxx';
+    let reg12 = /(?<=\$)[a-z]+/g;
+    let res12 = str12.match(reg12);
+    console.log(res12);
+
+    //⊗jsSpREStri
+    let pat = 'ru|by|ua';
+    let reg13 = new RegExp(`^[a-z]+\.(${pat})$`);
+
+    //#2
+    let arr = ['ru', 'by', 'ua'];
+    let pat13 = arr.join('|');
+    let reg14 = new RegExp(`^[a-z]+\.(${pat13})$`);
+  </script>
+</body>
+
+</html>
